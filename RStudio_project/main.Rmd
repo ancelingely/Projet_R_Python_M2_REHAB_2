@@ -1,0 +1,46 @@
+---
+title: "A minimal notebook to analyse test data\n"
+author: "Denis MOTTET"
+date: "`r format(Sys.time(), '%d %B, %Y, %H:%M')`"
+output:
+  html_document:
+    df_print: paged
+    code_folding: hide
+    toc: false
+    number_sections: true
+---
+
+```{r}
+# import libraries to read excel and compute a plot
+library(readxl)
+library(ggplot2)
+library(ggpubr)
+```
+```{r}
+# From data, import "results_repetition.xlsx"
+data <- read_excel("data/results_repetition.xlsx")
+data
+```
+
+```{r}
+# Plot NNP_flexion as a function of NNP
+ggplot(data, aes(x = NNP, y = NNP_flexion)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  geom_smooth(method = "loess", se = FALSE, color = "red") +
+  # add the equation and the R-squared value to the plot
+  stat_regline_equation(label.x = 3, label.y = 0.9) +
+  stat_cor(method = "pearson", label.x = 3, label.y = 0.5) +
+  labs(title = "NNP_flexion vs NNP",
+       x = "NNP",
+       y = "NNP_flexion") +
+  theme_minimal()
+
+#Residuals
+model <- lm(NNP_flexion ~ NNP, data = data)
+
+plot(model$fitted.values, model$residuals)
+abline(h = 0, col = "red")
+
+```
+
