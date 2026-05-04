@@ -1,6 +1,6 @@
 ---
-title: "A minimal notebook to analyse test data\n"
-author: "Denis MOTTET"
+title: "Segmented signal vs whole signal"
+author: "Gely Ancelin"
 date: "`r format(Sys.time(), '%d %B, %Y, %H:%M')`"
 output:
   html_document:
@@ -16,11 +16,19 @@ library(readxl)
 library(ggplot2)
 library(ggpubr)
 ```
+
+
 ```{r}
 # From data, import "results_repetition.xlsx"
 data <- read_excel("data/results_repetition.xlsx")
 data
 ```
+
+# Segmented signal vs whole signal
+
+## Number of peak
+
+### plot NNP_flexion as a function of NNP
 
 ```{r}
 # Plot NNP_flexion as a function of NNP
@@ -28,6 +36,7 @@ ggplot(data, aes(x = NNP, y = NNP_flexion)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
   geom_smooth(method = "loess", se = FALSE, color = "red") +
+  geom_abline(slope = 1, intercept = 0, color = "green", linetype = "dashed") +
   # add the equation and the R-squared value to the plot
   stat_regline_equation(label.x = 3, label.y = 0.9) +
   stat_cor(method = "pearson", label.x = 3, label.y = 0.5) +
@@ -35,12 +44,71 @@ ggplot(data, aes(x = NNP, y = NNP_flexion)) +
        x = "NNP",
        y = "NNP_flexion") +
   theme_minimal()
+```
 
-#Residuals
+
+**description**: The plot shows the relationship between NNP_flexion and NNP. The points represent the data, while the blue line represents the linear regression fit and the red line represents the loess fit. The equation of the linear regression and the R-squared value are also displayed on the plot.
+
+**Observation** : There is a positive correlation between NNP_flexion and NNP. Le loess fit (red line) and the linear fit (blue line) are quite similar, indicating that the relationship between NNP_flexion and NNP is approximately linear.
+
+**Interpretation**: 
+the slope value (0.97) indicates that for every unit increase in NNP, there is an expected increase of 0.97 units in NNP_flexion and The intercept value (0.12) suggests that when NNP is zero, NNP_flexion is expected to be 0.12. These values indicate a strong positive relationship between NNP and NNP_flexion
+
+The R-squared value (0.88) indicates that approximately 88% of the variability in NNP_flexion can be explained by the linear relationship with NNP. This suggests that the number of peaks in the segmented signal (NNP_flexion) is strongly correlated with the number of peaks in the whole signal (NNP).
+
+The number of peaks in the segmented signal (NNP_flexion) is strongly correlated with the number of peaks in the whole signal (NNP). This suggests that the segmented signal captures a significant portion of the information contained in the whole signal, at least in terms of the number of peaks.
+
+
+
+
+### Linearity hypothesis
+```{r}
+# Compute the linear hypothesis
 model <- lm(NNP_flexion ~ NNP, data = data)
 
-plot(model$fitted.values, model$residuals)
-abline(h = 0, col = "red")
+library(car)
+linearHypothesis(model, "NNP = 1")
 
 ```
+
+
+**linear hypothesis** 
+H0 = The slope of the relationship between NNP_flexion and NNP is equal to 1 (NNP = 1)
+H1 = The slope of the relationship between NNP_flexion and NNP is not equal to 1 (NNP != 1)
+
+The p-value (0.69) indicates that we do not reject the null hypothesis. This means that we cannot conclude that the slope of the relationship between NNP_flexion and NNP is significantly different from 1.
+
+A proportionate relationship exists between NNP_flexion and NNP which suggest that the NNP of the whole signal can be used as a proxy for the NNP of the segmented signal, and vice versa.
+
+
+## SPARC
+
+### plot SPARC_flexion as a function of SPARC
+
+```{r}
+# Plot SPARC_flexion as a function of SPARC
+ggplot(data, aes(x = SPARC, y = SPARC_flexion)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  geom_smooth(method = "loess", se = FALSE, color = "red") +
+  #geom_abline(slope = 1, intercept = 0, color = "green", linetype = "dashed") +
+  stat_regline_equation(label.x = -9, label.y = -15) +
+  stat_cor(method = "pearson", label.x = -9, label.y = - 16) +  
+  labs(title = "SPARC_flexion vs SPARC",
+       x = "SPARC",
+       y = "SPARC_flexion") +
+  theme_minimal()
+  
+```
+
+
+### Linear hypothesis
+
+```{r}
+# Compute the linear hypothesis
+model <- lm(SPARC_flexion ~ SPARC, data = data)
+linearHypothesis(model, "SPARC = 1")
+
+```
+
 

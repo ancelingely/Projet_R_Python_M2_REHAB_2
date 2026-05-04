@@ -8,17 +8,15 @@ Low back pain represents the leading cause of disability worldwide. Activity-lim
 
 Movement smoothness, a component of movement quality, is rarely used in patients with low back pain, despite its potential to provide valuable information about sensorimotor control and to support patient assessment. Movement smoothness reflects the degree to which a movement is performed continuously without interruption, independently of its amplitude or duration. In this context, reduced smoothness corresponds to intermittent motion characterized by repeated phases of acceleration and deceleration (3). 
 
-Several methods exist to evaluate movement smoothness, including the spectral arc lenght (SPARC), the log dimensionless jerk (LDJ), the normalized number of peaks (NPP). The SPARC method has been shown to be more valid, sensitive and robust than the other methods. NNP as the advantage of being less computationally intensive and easier to implement in clinical settings. Morover as the movement duration in our study is relatively short, the NNP method might be less affected by movement duration than the SPARC method (3,4,5).
+Several methods exist to evaluate movement smoothness, including the spectral arc lenght (SPARC), the log dimensionless jerk (LDJ), the normalized number of peaks (NPP). The SPARC method has been shown to be more valid, sensitive and robust than the other methods. NNP as the advantage of being less computationally intensive and easier to implement in clinical settings. Moreover as the movement duration in our study is relatively short, the NNP method might be less affected by movement duration than the SPARC method (3,4,5). In a previous study, we have shown that SPARC and NNP were significantly correlated and can be interchangeable in a set of 10 low back pain patients performing a flexion-extension task (6). 
 
-What we are looking for : investigate the relationship between two movement smoothness metrics (SPARC and NNP) to determine whether they provide complementary information about movement quality in individuals with low back pain.
+However, we don't know if the SPARC and NNP give similar result when we calculate them for each repetition of the movement or when we calculate them for the whole movement. This is important to know because in clinical practice, it is more common to evaluate the whole movement rather than segmenting it into repetitions.
 
 ### 1.2 : objectives :
-The main objective of this project is to investigate the relationship between two movement smoothness metrics, SPARC and NNP, in individuals with low back pain. 
-
-The result will provide informations for choice of the most appropriate metric for a study that evaluate the association between the evolution of movement smoothness and disability in individuals with low back pain before and after a rehabilitation program.
+The aime of this study is to investigate the relationship between the whole signal and the segmented signal for both SPARC and NNP methods in individuals with low back pain. These results will help us to determine if the SPARC and NNP metrics calculated for the whole movement can be used as a proxy for the metrics calculated for each repetition, which would simplify the assessment of movement smoothness in clinical practice.
 
 #### 1.2.1 : hypothesis :
-We hypothesize that SPARC and NNP will be significantly correlated, indicating that they provide complementary information about movement quality in individuals with low back pain. 
+We hypothesize that NNP metric will show a stronger correlation between the whole signal and the segmented signal than the SPARC metric, due to its lower sensitivity to movement duration and its computational simplicity. If this hypothesis is confirmed, it would suggest that NNP could be a more practical and reliable metric for assessing movement smoothness in clinical settings, especially when evaluating short-duration movements in individuals with low back pain.
 
 ### 1.3 : methods :
 #### 1.3.1 : participants :
@@ -26,7 +24,7 @@ We hypothesize that SPARC and NNP will be significantly correlated, indicating t
 Patients were excluded if they had (1) experienced an episode of sciatica within the previous three months, (2) low back pain of traumatic, tumoral or infectious origin, (3) an history of spinal, pelvic or hip fracture, (4) inflammatory rheumatic disease, (5) prior spinal fusion, (6) severe scoliosis, (7) inability to provide informed consent or legal protection status, (8) lack of affiliation with a social security system, (9) deprived of liberty by judicial or administrative decision, (10) concurrent participation in another research study with an ongoing exclusion period, (11) pregnancy or breastfeeding
 
 #### 1.3.2 : data collection :
-Patients were equipped with Xsens inertial sensors (Awinda) placed on the head, T8, L1, L4 and S1, with a sampling frequency of 100 Hz. Participants completed a standardized task including three repetitions each of maximal lumbar flexion and trunk rotation to the left and right, while standing with feet shoulder-width apart, knees extended. Each assessment lasted approximately 15 minutes. 
+Patients were equipped with Xsens inertial sensors (Awinda) placed on the head, T8, L1, L4 and S1, with a sampling frequency of 60 Hz. Participants completed a standardized task including five repetitions each of maximal lumbar flexion and trunk rotation to the left and right, while standing with feet shoulder-width apart, knees extended. Each assessment lasted approximately 15 minutes. 
 
 #### 1.3.3 : outcome mesured : 
 Movement smoothness was evaluated based on the velocity profile given by the gyroscope. 
@@ -40,7 +38,7 @@ NNP = (number of peaks in the velocity profile) / (total duration of the movemen
 
 ## 2 : Python project : data analysis
 ### 2.1 : aim 
-the aim of the python project is to extract the velocity profile from the gyroscope data, segment the movement into individual repetitions of flexion and extension and calculate the SPARC and NNP metrics for each repetition.
+the aim of the python project is to extract the velocity profile from the gyroscope data, segment the movement into individual repetitions of flexion and extension and calculate the SPARC and NNP metrics for each repetition and for the whole movement. 
 
 ### 2.2 : data organisation : 
 #### 2.2.1 : data structure :
@@ -50,34 +48,35 @@ The file contains for each participant :
 - Segment angular velocity (°/s) for each sensor (head, T8, L1, L4 and S1) in the three planes of movement (flexion-extension, lateral flexion and rotation) during the flexion task.
 
 ### 2.3 : Notebook structure :
-In the python notebook, we will follow the following structure :
+The python notebook, follows the structure :
 1. Import necessary libraries
 2. Load the data
 3. Preprocess the data (filtering, segmentation)
 4. Calculate SPARC and NNP metrics for each repetition
-5. add the result to a dataframe for each participant and save it as a csv file for the next step of the project (R project : statistical analysis)
+5. Calculate SPARC and NNP metrics for the whole movement
+6. add the result to a dataframe for each participant and save it as a csv file for the next step of the project (R project : statistical analysis)
 
 **preprocessing** : 
-- Filtering : we will apply a low-pass Butterworth filter to the angular velocity data to remove high-frequency noise. The cutoff frequency is 8 Hz.
+- Filtering : A low-pass Butterworth filter is applied to the angular velocity data to remove high-frequency noise. The cutoff frequency is 8 Hz.
 
-- Segmentation : we will segment the movement into individual repetitions of flexion and extension using a peak detection algorithm. We will identify the peaks in the angular velocity profile to determine the start and end of each repetition. The movement flexion is performed 5 times, so we will have 5 segments of flexion and 5 segments of extension for each participant.
+- Segmentation : The movement is segmented into individual repetitions of flexion and extension using a peak detection algorithm. We identify the peaks in the angular velocity profile to determine the start and end of each repetition. As the movement flexion is performed 5 times, 5 peaks are expected in the velocity profile. The same process is applied for the extension movement.
 
 **calculation of SPARC and NNP** :
-- SPARC : we will calculate the Fourier magnitude spectrum of the velocity profile and then compute the SPARC metric using the formula provided above.
+- SPARC : The Fourier magnitude spectrum of the velocity profile is calculated and then the SPARC metric is computed using the formula provided above.
 
-- NNP : we will count the number of peaks in the velocity profile and divide it by the total duration of the movement to calculate the NNP metric. The function find_peaks from the scipy library can be used to identify the peaks in the velocity profile. this function requires a minimum height to avoid counting nois as peaks. The threshold was arbitrarily set at 0.05 °/s. A sensitivity analysis was performed to check the effect of this threshold on the results. it is available following this link : 
+- NNP : The number of peaks in the velocity profile is counted and then divided by the total duration of the movement to calculate the NNP metric. The function find_peaks from the scipy library can be used to identify the peaks in the velocity profile. This function requires a minimum height to avoid counting noise as peaks. The threshold was arbitrarily set at 0.05 °/s. A sensitivity analysis was performed to check the effect of this threshold on the results. It is available following this link : 
 
-As the movement had been performed 5 times, we will calculate the SPARC and NNP metrics for each repetition. Then, we are going to compute the mean and the median for each signal.
-
-**output** : we will create a dataframe with the following columns : Signal name,	mean_SPARC_flexion,	mean_SPARC_extension,	mean_NNP_flexion,	mean_NNP_extension,	median_SPARC_flexion,	median_SPARC_extension,	median_NNP_flexion,	median_NNP_extension. This dataframe will be saved as "results_table.xlsx" for the next step of the project (R project : statistical analysis).
+**output** : results are stored in a dataframe with the following columns : Signal name,	mean_SPARC_flexion,	mean_SPARC_extension,	mean_NNP_flexion,	mean_NNP_extension,	median_SPARC_flexion,	median_SPARC_extension,	median_NNP_flexion,	median_NNP_extension. This dataframe is saved as "results_table.xlsx" for the next step of the project (R project : statistical analysis).
 
 ## 3 : R project : statistical analysis
 ### 3.1 : aim
-the aim of the R project is to investigate the relationship between the SPARC and NNP metrics in individuals with low back pain by performing a correlation analysis.
+the aim of the R project is to investigate the relationship between the whole signal and the segmented signal for both SPARC and NNP methods in individuals with low back pain. 
 
 ### 3.2 : data organisation :
-**files** : "results_table.xlsx" which contains the mean and median SPARC and NNP metrics for each participant and each signal during flexion and extension.
-**columns** : Signal name,	mean_SPARC_flexion,	mean_SPARC_extension,	mean_NNP_flexion,	mean_NNP_extension,	median_SPARC_flexion,	median_SPARC_extension,	median_NNP_flexion,	median_NNP_extension.
+**files** : "results_table.xlsx" which contains the SPARC and NNP metrics for each participant, calculated for each repetition and for the whole movement.
+
+**columns** : Signal name,	SPARC_flexion,	SPARC_extension,	NNP_flexion,	NNP_extension,	SPARC,	NNP
+**Signal name** : the name of the signal (e.g. "hFlexion_Dos_01) + the repetition number
 
 ### 3.3 : script structure :
 #### 3.3.1 : visualization :
