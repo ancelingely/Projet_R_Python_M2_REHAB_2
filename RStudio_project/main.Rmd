@@ -10,6 +10,7 @@ output:
     number_sections: true
 ---
 
+
 ```{r}
 # import libraries to read excel and compute a plot
 library(readxl)
