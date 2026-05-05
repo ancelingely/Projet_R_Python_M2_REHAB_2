@@ -10,30 +10,163 @@ output:
     number_sections: true
 ---
 
+# Scientific problem
+
+
+
+## Context
+
+Low back pain represents the leading cause of disability worldwide. At the individual level, low back pain has substantial consequences, including activity limitations (1) as well as spinal kinematic alterations (2).
+
+Movement smoothness has a potential to provide valuable information about sensorimotor control and to support patient assessment.it reflects the degree to which a movement is performed continuously without interruption, independently of its amplitude or duration(3).
+
+Several methods exist to evaluate movement smoothness, including the spectral arc lenght (SPARC), the log dimensionless jerk (LDJ), the normalized number of peaks (NPP). The SPARC method has been shown to be more valid, sensitive and robust than the other methods. NNP as the advantage of being less computationally intensive and easier to implement in clinical settings. Moreover as the movement duration in our study is relatively short, the NNP method might be less affected by movement duration than the SPARC method (3,4,5). In a previous study, we have shown that SPARC and NNP were significantly correlated and can be interchangeable in a set of 10 low back pain patients performing a flexion-extension task (6).
+
+In the present study, we evaluation movement smoothness during 5 repetions of flexion extension. However, we don't know if the SPARC and NNP give similar result when we calculate them for each repetition of the movement or when we calculate them for the whole movement. This is important to know because in clinical practice, it is more common to evaluate the whole movement rather than segmenting it into repetitions.
+
+## Aim
+
+
+The aime of this study is to investigate the relationship between the whole signal and the segmented signal for both SPARC and NNP methods in individuals with low back pain. These results will help us to determine if the SPARC and NNP metrics calculated for the whole movement can be used as a proxy for the metrics calculated for each repetition, which would simplify the assessment of movement smoothness in clinical practice.
+
+## Method
+
+
+### Participants 
+
+10 individuals with low back pain participated in this study. The target population consisted of adults aged between 18 to 65 years with chronic low back pain persisting for more than three months. Participants were eligible for inclusion if they had a body mass index between 18 and 30 kg/m^2 and were undergoing rehabilitation in the physical and rehabilitation medicine department of Montpellier University Hospital
+
+### Outcomes
+
+Movement smoothness was evaluated based on the velocity profile given by the gyroscope.
+
+SPARC formula : SPARC = - ∫ |dV(ω)/dω| dω Where V(ω) is the Fourier magnitude spectrum of the velocity profile and ω is the angular frequency.
+
+NNP formula : NNP = (number of peaks in the velocity profile) / (total duration of the movement).
+
+# Aim of the code 
+
+The aim of this code is to load the SPARC and NNP for the whole signal and segmented signal and look for a relationship. 
+
+# Data organisation 
+
+
+
+## File name 
+
+
+results_repetition.xlsx
+These data are the results of the Python_project, in which we computed the SPARC and NNP for the whole signal and segmented signal for 10 individuals with low back pain performing a flexion-extension task. 
+
+## File structure
+
+
+The data are organized in an Excel file with the following columns:
+
+- Signal name : FlexionDos_00X_av_repY, where X is the participant number (from 1 to 10) and Y is the repetition number (from 1 to 5) 
+
+- SPARC_flexion : SPARC value calculated for the segmented signal (for each repetition)
+
+- SPARC_extension : SPARC value calculated for the segmented signal (for each repetition)
+
+- NNP_flexion : NNP value calculated for the segmented signal (for each repetition)
+
+- NNP_extension : NNP value calculated for the segmented signal (for each repetition)
+
+- SPARC : SPARC value calculated for the whole signal (for each participant)
+
+- NNP : NNP value calculated for the whole signal (for each participant)
+
+# Notebook organisation
+
+
+
+In this notebook, we will perform the following steps : 
+
+1. Import libraries 
+
+2. Load and visualise the data computed in the Python project
+
+3. Create a new dataframe with the mean SPARC and NNP for the segmented signal for each participant
+
+4. Plot the relationship between NNP_flexion and NNP and test the linearity hypothesis
+
+5. Plot the relationship between SPARC_flexion and SPARC and test the linearity
+
+
+### Import libraries
 
 ```{r}
 # import libraries to read excel and compute a plot
 library(readxl)
 library(ggplot2)
 library(ggpubr)
+library(dplyr)
+library(stringr)
+
 ```
 
+### Load and visualise the data computed in the Python project
 
 ```{r}
 # From data, import "results_repetition.xlsx"
-data <- read_excel("data/results_repetition.xlsx")
-data
+dataframe <- read_excel("data/results_repetition.xlsx")
+dataframe
 ```
 
-# Segmented signal vs whole signal
+### Create a new dataframe with the mean SPARC and NNP for the segmented signal 
 
-## Number of peak
+We have to compute the mean SPARC and NNP for the for each repetition of the segmented signal. Keeping each repetition would inflat statistical power due to non-independence of repeted measures.
 
-### plot NNP_flexion as a function of NNP
+It would have been possible to extract only the mean value in the Python project, but it might be interesting to keep the possibility to look at the data for each repetition in case we want to investigate other parameters as the variability between repetitions.
+
+```{r}
+dataframe <- dataframe %>%
+  mutate(
+    subject = str_extract(`Signal name`, "\\d{3}"),
+    rep = str_extract(`Signal name`, "rep\\d+")
+  )
+
+data_subject <- dataframe %>%
+  group_by(subject) %>%
+  summarise(
+    mean_SPARC_flexion = mean(SPARC_flexion, na.rm = TRUE),
+    mean_NNP_flexion = mean(NNP_flexion, na.rm = TRUE)
+  )
+
+# Add SPARC and NNP from "dataframe" to "data_subject"
+data_subject <- data_subject %>%
+  left_join(
+    dataframe %>%
+      select(subject, SPARC, NNP) %>%
+      distinct(),
+    by = "subject"
+  )
+
+data_subject
+```
+
+
+
+
+
+## Visualisation - Segmented signal vs whole signal
+
+### plot mean_NNP_flexion as a function of NNP
+
+This plot shows the relationship between NNP_flexion and NNP. 
+
+- The points represent the data for each participant and each repetition. 
+
+- The red line represents the loess fit, which is a non-parametric method that fits a smooth curve to the data.
+
+- The blue line represents the linear regression fit. 
+
+- The equation of the linear regression and the R-squared value are also displayed on the plot.
 
 ```{r}
 # Plot NNP_flexion as a function of NNP
-ggplot(data, aes(x = NNP, y = NNP_flexion)) +
+ggplot(data_subject, aes(x = NNP, y = mean_NNP_flexion)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
   geom_smooth(method = "loess", se = FALSE, color = "red") +
@@ -43,52 +176,26 @@ ggplot(data, aes(x = NNP, y = NNP_flexion)) +
   stat_cor(method = "pearson", label.x = 3, label.y = 0.5) +
   labs(title = "NNP_flexion vs NNP",
        x = "NNP",
-       y = "NNP_flexion") +
+       y = "mean_NNP_flexion") +
   theme_minimal()
 ```
 
 
-**description**: The plot shows the relationship between NNP_flexion and NNP. The points represent the data, while the blue line represents the linear regression fit and the red line represents the loess fit. The equation of the linear regression and the R-squared value are also displayed on the plot.
 
 **Observation** : There is a positive correlation between NNP_flexion and NNP. Le loess fit (red line) and the linear fit (blue line) are quite similar, indicating that the relationship between NNP_flexion and NNP is approximately linear.
 
 **Interpretation**: 
-the slope value (0.97) indicates that for every unit increase in NNP, there is an expected increase of 0.97 units in NNP_flexion and The intercept value (0.12) suggests that when NNP is zero, NNP_flexion is expected to be 0.12. These values indicate a strong positive relationship between NNP and NNP_flexion
+the slope value (0.96) indicates that for every unit increase in NNP, there is an expected increase of 0.96 units in NNP_flexion and The intercept value (0.12) suggests that when NNP is zero, NNP_flexion is expected to be 0.16. These values indicate a strong positive relationship between NNP and NNP_flexion
 
-The R-squared value (0.88) indicates that approximately 88% of the variability in NNP_flexion can be explained by the linear relationship with NNP. This suggests that the number of peaks in the segmented signal (NNP_flexion) is strongly correlated with the number of peaks in the whole signal (NNP).
+The R-squared value (0.96) indicates that approximately 96% of the variability in NNP_flexion can be explained by the linear relationship with NNP. This suggests that the number of peaks in the segmented signal (NNP_flexion) is strongly correlated with the number of peaks in the whole signal (NNP).
 
-The number of peaks in the segmented signal (NNP_flexion) is strongly correlated with the number of peaks in the whole signal (NNP). This suggests that the segmented signal captures a significant portion of the information contained in the whole signal, at least in terms of the number of peaks.
-
-
-
-
-### Linearity hypothesis
-```{r}
-# Compute the linear hypothesis
-model <- lm(NNP_flexion ~ NNP, data = data)
-
-library(car)
-linearHypothesis(model, "NNP = 1")
-
-```
-
-
-**linear hypothesis** 
-H0 = The slope of the relationship between NNP_flexion and NNP is equal to 1 (NNP = 1)
-H1 = The slope of the relationship between NNP_flexion and NNP is not equal to 1 (NNP != 1)
-
-The p-value (0.69) indicates that we do not reject the null hypothesis. This means that we cannot conclude that the slope of the relationship between NNP_flexion and NNP is significantly different from 1.
-
-A proportionate relationship exists between NNP_flexion and NNP which suggest that the NNP of the whole signal can be used as a proxy for the NNP of the segmented signal, and vice versa.
-
-
-## SPARC
+This suggests that the segmented signal captures a significant portion of the information contained in the whole signal, at least in terms of the number of peaks.
 
 ### plot SPARC_flexion as a function of SPARC
 
 ```{r}
 # Plot SPARC_flexion as a function of SPARC
-ggplot(data, aes(x = SPARC, y = SPARC_flexion)) +
+ggplot(data_subject, aes(x = SPARC, y = mean_SPARC_flexion)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
   geom_smooth(method = "loess", se = FALSE, color = "red") +
@@ -102,14 +209,96 @@ ggplot(data, aes(x = SPARC, y = SPARC_flexion)) +
   
 ```
 
+**Observation** : 
 
-### Linear hypothesis
+the slope value (1.2) indicates that for every unit increase in SPARC, there is an expected increase of 1.2 units in SPARC_flexion and The intercept value (5.4) suggests that when SPARC is zero, SPARC_flexion is expected to be 5.4. These values indicate a positive relationship between SPARC and SPARC_flexion, but the slope is not equal to 1, which suggests that the relationship is not strictly proportional.
+
+The R-squared value (0.58) indicates that approximately 58% of the variability in SPARC_flexion can be explained by the linear relationship with SPARC. This suggest that there is a moderate correlation between SPARC and SPARC_flexion, but there is also a significant amount of variability that is not explained by the linear model. 
+
+Moreover, the loess fit (red line) shows a non-linear pattern, mostly for extreme values of SPARC. 
+
+
+**Interpretation** : 
+
+
+## Bland-Altman test 
+
+### Bland-Altman - NNP
 
 ```{r}
-# Compute the linear hypothesis
-model <- lm(SPARC_flexion ~ SPARC, data = data)
-linearHypothesis(model, "SPARC = 1")
+# Compute the Bland-Altman test
+
+data_subject$mean_NNP <- (data_subject$NNP + data_subject$mean_NNP_flexion) / 2
+data_subject$diff_NNP <- data_subject$NNP - data_subject$mean_NNP_flexion
+
+bias_NNP <- mean(data_subject$diff_NNP, na.rm = TRUE)
+sd_NNP <- sd(data_subject$diff_NNP, na.rm = TRUE)
+
+upper_NNP <- bias_NNP + 1.96 * sd_NNP
+lower_NNP <- bias_NNP - 1.96 * sd_NNP
+
+# Plot
+ggplot(data_subject, aes(x = mean_NNP, y = diff_NNP)) +
+  geom_point(size = 3) +
+  geom_hline(yintercept = bias_NNP, color = "blue", size = 1) +
+  geom_hline(yintercept = upper_NNP, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = lower_NNP, linetype = "dashed", color = "red") +
+  labs(title = "Bland-Altman Plot (NNP)",
+       x = "Mean of methods",
+       y = "Difference (Global - Segmented)") +
+  theme_minimal()
 
 ```
+
+
+### Bland-Altman test - SPARC
+
+```{r}
+# Compute the Bland-Altman test
+data_subject$mean_SPARC <- (data_subject$SPARC + data_subject$mean_SPARC_flexion) / 2
+data_subject$diff_SPARC <- data_subject$SPARC - data_subject$mean_SPARC_flexion
+
+bias_SPARC <- mean(data_subject$diff_SPARC, na.rm = TRUE)
+sd_SPARC <- sd(data_subject$diff_SPARC, na.rm = TRUE)
+
+upper_SPARC <- bias_SPARC + 1.96 * sd_SPARC
+lower_SPARC <- bias_SPARC - 1.96 * sd_SPARC
+
+# Plot
+ggplot(data_subject, aes(x = mean_SPARC, y = diff_SPARC)) +
+  geom_point(size = 3) +
+  geom_hline(yintercept = bias_SPARC, color = "blue", size = 1) +
+  geom_hline(yintercept = upper_SPARC, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = lower_SPARC, linetype = "dashed", color = "red") +
+  labs(title = "Bland-Altman Plot (SPARC)",
+       x = "Mean of methods",
+       y = "Difference (Global - Segmented)") +
+  theme_minimal()
+
+```
+
+```{r}
+# Moyennes globales (NNP)
+mean_NNP_all <- mean(c(data_subject$NNP, data_subject$mean_NNP_flexion), na.rm = TRUE)
+
+# Moyennes globales (SPARC)
+mean_SPARC_all <- mean(c(data_subject$SPARC, data_subject$mean_SPARC_flexion), na.rm = TRUE)
+
+# % bias
+perc_bias_NNP <- (bias_NNP / mean_NNP_all) * 100
+perc_bias_SPARC <- (bias_SPARC / mean_SPARC_all) * 100
+
+ba_table <- data.frame(
+  methode = c("NNP", "SPARC"),
+  bias = c(bias_NNP, bias_SPARC),
+  sd = c(sd_NNP, sd_SPARC),
+  lower = c(lower_NNP, lower_SPARC),
+  upper = c(upper_NNP, upper_SPARC), 
+  perc_bias = c(perc_bias_NNP, perc_bias_SPARC)
+)
+
+ba_table
+```
+
 
 
