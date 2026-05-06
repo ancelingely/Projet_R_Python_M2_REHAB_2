@@ -2,21 +2,28 @@
 _____________
 # Movement smoothness as a subclinical marker in low back pain
 
-## 1 : scientific problem
-### 1.1 : context : 
-Low back pain represents the leading cause of disability worldwide. Activity-limiting low back pain affects around 540 million people worldwide at any given time, corresponding to a point prevalence of 73%. At the individual level, low back pain has substantial consequences, including activity limitations, work absenteeism, social isolation(1) as well as spinal kinematic alterations (2). 
+# Scientific problem
 
-Movement smoothness, a component of movement quality, is rarely used in patients with low back pain, despite its potential to provide valuable information about sensorimotor control and to support patient assessment. Movement smoothness reflects the degree to which a movement is performed continuously without interruption, independently of its amplitude or duration. In this context, reduced smoothness corresponds to intermittent motion characterized by repeated phases of acceleration and deceleration (3). 
+## Context
 
-Several methods exist to evaluate movement smoothness, including the spectral arc lenght (SPARC), the log dimensionless jerk (LDJ), the normalized number of peaks (NPP). The SPARC method has been shown to be more valid, sensitive and robust than the other methods. NNP as the advantage of being less computationally intensive and easier to implement in clinical settings. Moreover as the movement duration in our study is relatively short, the NNP method might be less affected by movement duration than the SPARC method (3,4,5). In a previous study, we have shown that SPARC and NNP were significantly correlated and can be interchangeable in a set of 10 low back pain patients performing a flexion-extension task (6). 
+Low back pain represents the leading cause of disability worldwide. At the individual level, low back pain has substantial consequences, including activity limitations (1) as well as spinal kinematic alterations (2).
 
-However, we don't know if the SPARC and NNP give similar result when we calculate them for each repetition of the movement or when we calculate them for the whole movement. This is important to know because in clinical practice, it is more common to evaluate the whole movement rather than segmenting it into repetitions.
+Movement smoothness has a potential to provide valuable information about sensorimotor control and to support patient assessment.it reflects the degree to which a movement is performed continuously without interruption, independently of its amplitude or duration(3).In this context, we are leading a study to evaluate **the evolution of movement smoothness in trunck flexion before and after a rehabilitation program in individuals with low back pain**. The assesment consist in performing 5 repetitions of a flexion-extension task while wearing an inertial measurement unit (IMU) on the lower back.
 
-### 1.2 : objectives :
-The aime of this study is to investigate the relationship between the whole signal and the segmented signal for both SPARC and NNP methods in individuals with low back pain. These results will help us to determine if the SPARC and NNP metrics calculated for the whole movement can be used as a proxy for the metrics calculated for each repetition, which would simplify the assessment of movement smoothness in clinical practice.
+Several methods exist to evaluate movement smoothness, including the spectral arc lenght (SPARC), the log dimensionless jerk (LDJ), the normalized number of peaks (NPP). The SPARC method has been shown to be more valid, sensitive and robust than the other methods. NNP as the advantage of being less computationally intensive and easier to implement (3,4,5). 
 
-#### 1.2.1 : hypothesis :
-We hypothesize that NNP metric will show a stronger correlation between the whole signal and the segmented signal than the SPARC metric, due to its lower sensitivity to movement duration and its computational simplicity. If this hypothesis is confirmed, it would suggest that NNP could be a more practical and reliable metric for assessing movement smoothness in clinical settings, especially when evaluating short-duration movements in individuals with low back pain.
+In a previous work, Pearson (R=-0,75 ; p = 0,01) and Spearman (R=-0,8 ; p = 0,009) correlations showed a strong and significant negative association between SPARC and NNP when computed on a segmented movement (6) These results indicate a robust monotonic relationship between the two metrics.  
+
+However, the existence of a relationship between SPARC and NNP does not guarantee that their values are stable across different signal processing approaches, such as computing them on the whole signal versus segmented repetitions. Signal segmentation may alter the properties of the data, particularly for frequency-based metrics such as SPARC, which are sensitive to signal duration. On the other hand, the whole signal capture non-task related phases which may also bias the estimation of smoothness (copilote).
+
+
+## Aim
+
+The aim of this methodological work is to investigate the relationship between the whole signal and the segmented signal for both SPARC and NNP methods in individuals with low back pain. These results will help us to determine if the SPARC and NNP metrics calculated for the whole movement can be used as a proxy for the metrics calculated for each repetition, which would simplify the assessment of movement smoothness in clinical practice.
+
+## Hypothesis 
+
+We hypothesize that NNP metric will show a stronger correlation between the whole signal and the segmented signal than the SPARC metric, due to its lower sensitivity to movement duration and structure.
 
 ### 1.3 : methods :
 #### 1.3.1 : participants :
