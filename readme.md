@@ -35,7 +35,7 @@ Patients were equipped with Xsens inertial sensors (Awinda) placed on the head, 
 
 figure above shows the velocity profile computed from a patient. Flexion segments are highlighted in blue and extension segments are highlighted in red. 
 
-![Patient_7](img\FlexionDos_007_av_segments.png)
+![Patient_7](img/FlexionDos_007_av_segments.png)
 
 
 #### 1.3.3 : outcome mesured : 
