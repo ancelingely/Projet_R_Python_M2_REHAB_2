@@ -91,16 +91,11 @@ the aim of the R project is to investigate the relationship and interchangeabili
 **Signal name** : the name of the signal (e.g. "hFlexion_Dos_01) 
 
 ### 3.3 : script structure :
-#### 3.3.1 : visualization :
-1. Load the data
-2. Create scatter plots to visualize the relationship between the whole signal and the segmented signal for both SPARC and NNP metrics. 
-3. Add a regression line and a loess curve to each scatter plot to illustrate the correlation between the two metrics. 
-4. Create Bland-Altman plots to assess the agreement between the whole signal and the segmented signal for both SPARC and NNP metrics. 
 
-#### 3.3.2 : Scatter plots :
+#### 3.3.1 : Scatter plots :
 Values from the whole signal are plotted on the y-axis and values from the segmented signal are plotted on the x-axis. A regression line is added to each scatter plot to illustrate the correlation between the two metrics. The loess curve is added to capture any non-linear relationship between the two metrics. The equation of the regression line and the R-squared value are displayed on the plot to quantify the strength of the correlation. 
 
-#### 3.3.3 : Bland-Altman plots :
+#### 3.3.2 : Bland-Altman plots :
 Bland-Altman plots are created to assess the agreement between the whole signal and the segmented signal for both SPARC and NNP metrics. The difference between the two measurements (whole signal - segmented signal) is plotted on the y-axis against the average of the two measurements ((whole signal + segmented signal)/2) on the x-axis. The mean difference (bias) and the limits of agreement (mean difference ± 1.96 * standard deviation of the differences) are calculated and displayed on the plot. The Bland-Altman plots help to visualize any systematic bias between the two methods and to identify any potential outliers or trends in the differences across the range of measurements (7)
 
 
