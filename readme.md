@@ -15,7 +15,7 @@ Several methods exist to evaluate movement smoothness, including the spectral ar
 In a previous work, Pearson (R=-0,75 ; p = 0,01) and Spearman (R=-0,8 ; p = 0,009) correlations showed a strong and significant negative association between SPARC and NNP when computed on a segmented movement (6) These results indicate a robust monotonic relationship between the two metrics.  
 
 Patients are asked to performed 5 repetitions of the flexion task. So the signal is composed of 5 flexion and 5 return from flexion (extension), **Previous studies suggested that smoothness metrics (SPARC and LDLJ) should not be computed on entire rhythmic movements** (4), particularly due to the influence of pauses and repeated cycles on signal structure. However, it is not clear how strongly this issue affects the SPARC and NNP metrics during trunk flexion assessed with IMUs in individuals with low back pain. 
-
+ 
 Computing smoothness metrics on the whole signal may present practical and methodological advantages. Whole-signal analysis simplifies the processing pipeline by avoiding manual or automated segmentation procedures, may better reflect the natural continuity of functional movement, and reduces the risk of losing potentially relevant information at the transition phases between repetitions.
 
 ## Aim
