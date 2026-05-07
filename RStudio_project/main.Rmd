@@ -125,55 +125,10 @@ library(stringr)
 
 ```{r}
 # From data, import "results_repetition.xlsx"
-dataframe <- read_excel("data/results_repetition.xlsx")
-dataframe
-```
-
-# Create a new dataframe with the mean SPARC and NNP for the segmented signal 
-
-We have to compute the mean SPARC and NNP for the for each repetition of the segmented signal. Keeping each repetition would inflate statistical power due to non-independence of repeated measures.
-
-It would have been possible to extract only the mean value in the Python project, but it might be interesting to keep the possibility to look at the data for each repetition in case we want to investigate other parameters as the variability between repetitions.
-
-```{r}
-
-# mutate : Create new columns "subject" and "rep" by 
-# str_extract : extract the subject number and the repetition number 
-# "from the "Signal name" column using regular expressions 
-# "\\d{3}" : matches a sequence of three digits (the subject number)
-# "rep\\d+" : matches the string "rep" followed by one or more digits
-
-dataframe <- dataframe %>%
-  mutate(
-    subject = str_extract(`Signal name`, "\\d{3}"),
-    rep = str_extract(`Signal name`, "rep\\d+")
-  )
-
-# create a new dataframe called "data_subjects"
-# group_by : group the data  from the "subject" column of the "dataframe" dataframe
-# Compute the mean of SPARC_flexion and NNP_flexion for each subject
-# ignoring NA values with na.rm = TRUE
-
-data_subject <- dataframe %>%
-  group_by(subject) %>%
-  summarise(
-    mean_SPARC_flexion = mean(SPARC_flexion, na.rm = TRUE),
-    mean_NNP_flexion = mean(NNP_flexion, na.rm = TRUE)
-  )
-
-# Add SPARC and NNP from "dataframe" to "data_subject"
-# left_join : merge the "data_subject" dataframe with a subset of the "dataframe" dataframe
-
-data_subject <- data_subject %>%
-  left_join(
-    dataframe %>%
-      select(subject, SPARC, NNP) %>%
-      distinct(),
-    by = "subject"
-  )
-
+data_subject <- read_excel("data/results_all.xlsx")
 data_subject
 ```
+
 
 
 
