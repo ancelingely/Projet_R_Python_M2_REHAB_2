@@ -104,7 +104,6 @@ Values from the whole signal are plotted on the y-axis and values from the segme
 Bland-Altman plots are created to assess the agreement between the whole signal and the segmented signal for both SPARC and NNP metrics. The difference between the two measurements (whole signal - segmented signal) is plotted on the y-axis against the average of the two measurements ((whole signal + segmented signal)/2) on the x-axis. The mean difference (bias) and the limits of agreement (mean difference ± 1.96 * standard deviation of the differences) are calculated and displayed on the plot. The Bland-Altman plots help to visualize any systematic bias between the two methods and to identify any potential outliers or trends in the differences across the range of measurements (7)
 
 
-## 4 : conclusion
 
 ## References
 1. Hartvigsen J, Hancock MJ, Kongsted A, Louw Q, Ferreira ML, Genevay S, et al. What low back pain is and why we need to pay attention. Lancet Lond Engl. 9 juin 2018;391(10137):2356‑67
