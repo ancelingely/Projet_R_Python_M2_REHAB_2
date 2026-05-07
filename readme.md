@@ -12,9 +12,9 @@ Movement smoothness has a potential to provide valuable information about sensor
 
 Several methods exist to evaluate movement smoothness, including the spectral arc lenght (SPARC), the log dimensionless jerk (LDJ), the normalized number of peaks (NPP). The SPARC method has been shown to be more valid, sensitive and robust than the other methods. NNP as the advantage of being less computationally intensive and easier to implement (3,4,5). 
 
-In a previous work, Pearson (R=-0,75 ; p = 0,01) and Spearman (R=-0,8 ; p = 0,009) correlations showed a strong and significant negative association between SPARC and NNP when computed on a segmented movement (6) These results indicate a robust monotonic relationship between the two metrics.  
+In a previous work, Pearson (R=-0,75 ; p = 0,01) and Spearman (R=-0,8 ; p = 0,009) correlations showed a strong and significant negative association between SPARC and NNP when computed on a segmented movement (6) These results indicate a robust monotonic relationship between the two metrics. However, the existence of a relationship between SPARC and NNP does not guarantee that their values are stable across different signal processing approaches, such as computing them on the whole signal versus segmented repetitions. 
 
-However, the existence of a relationship between SPARC and NNP does not guarantee that their values are stable across different signal processing approaches, such as computing them on the whole signal versus segmented repetitions. Signal segmentation may alter the properties of the data, particularly for frequency-based metrics such as SPARC, which are sensitive to signal duration. On the other hand, the whole signal capture non-task related phases which may also bias the estimation of smoothness (copilote).
+Patients are asked to performed 5 repetitions of the flexion task. So the signal is composed of 5 flexion and 5 return from flexion (extension), it is not clear if the SPARC and NNP metrics calculated for the whole signal will be similar to the metrics calculated for each repetition of flexion. Signal segmentation may alter the properties of the data, particularly for frequency-based metrics such as SPARC, which are sensitive to signal duration. On the other hand, the whole signal capture non-task related phases which may also bias the estimation of smoothness (copilote).
 
 
 ## Aim
@@ -33,20 +33,19 @@ Patients were excluded if they had (1) experienced an episode of sciatica within
 #### 1.3.2 : data collection :
 Patients were equipped with Xsens inertial sensors (Awinda) placed on the head, T8, L1, L4 and S1, with a sampling frequency of 60 Hz. Participants completed a standardized task including five repetitions each of maximal lumbar flexion and trunk rotation to the left and right, while standing with feet shoulder-width apart, knees extended. Each assessment lasted approximately 15 minutes. 
 
-figure above shows the velocity profile computed from a patient. Flexion segments are highlighted in blue and extension segments are highlighted in red. 
+**Figure 1**: The figure above shows the velocity profile computed from a patient. Flexion segments are highlighted in blue and extension segments are highlighted in red. 
 
 ![Patient_7](img/FlexionDos_007_av_segments.png)
 
 
 #### 1.3.3 : outcome mesured : 
-Movement smoothness was evaluated based on the velocity profile given by the gyroscope. 
+Movement smoothness was evaluated based on the velocity profile given by the gyroscope. It is quantified using two metrics : SPARC and NNP. These metrics are described more in detail in the Python_project
 
-SPARC formula :
-SPARC = - ∫ |dV(ω)/dω| dω
+
+$SPARC = - ∫ |dV(ω)/dω| dω$
 Where V(ω) is the Fourier magnitude spectrum of the velocity profile and ω is the angular frequency.
 
-NNP formula :
-NNP = (number of peaks in the velocity profile) / (total duration of the movement). 
+$NNP = \frac{\text{number of peaks in the velocity profile}}{\text{total duration of the movement}}$
 
 ## 2 : Python project : data analysis
 ### 2.1 : aim 
@@ -78,30 +77,31 @@ The python notebook, follows the structure :
 
 - NNP : The number of peaks in the velocity profile is counted and then divided by the total duration of the movement to calculate the NNP metric. The function find_peaks from the scipy library can be used to identify the peaks in the velocity profile. This function requires a minimum height to avoid counting noise as peaks. The threshold was arbitrarily set at 0.05 °/s. A sensitivity analysis was performed to check the effect of this threshold on the results. It is available following this link : 
 
-**output** : results are stored in a dataframe with the following columns : Signal name,	mean_SPARC_flexion,	mean_SPARC_extension,	mean_NNP_flexion,	mean_NNP_extension,	median_SPARC_flexion,	median_SPARC_extension,	median_NNP_flexion,	median_NNP_extension. This dataframe is saved as "results_table.xlsx" for the next step of the project (R project : statistical analysis).
+**output** : results are stored in a dataframe with the following columns : Signal name,	mean_SPARC_flexion,	mean_NNP_flexion,	mean_NNP_extension,	SPARC, NNP. This dataframe is saved in the folder "results" as "results_all.xlsx" for the next step of the project (R project : statistical analysis).
 
 ## 3 : R project : statistical analysis
 ### 3.1 : aim
-the aim of the R project is to investigate the relationship between the whole signal and the segmented signal for both SPARC and NNP methods in individuals with low back pain. 
+the aim of the R project is to investigate the relationship and interchangeability between the whole signal and the segmented signal for both SPARC and NNP methods in individuals with low back pain. 
 
 ### 3.2 : data organisation :
-**files** : "results_table.xlsx" which contains the SPARC and NNP metrics for each participant, calculated for each repetition and for the whole movement.
+**files** : "results_all.xlsx" which contains the SPARC and NNP metrics for each participant, calculated for each repetition and for the whole movement.
 
-**columns** : Signal name,	SPARC_flexion,	SPARC_extension,	NNP_flexion,	NNP_extension,	SPARC,	NNP
-**Signal name** : the name of the signal (e.g. "hFlexion_Dos_01) + the repetition number
+**columns** : Signal name,	mean_SPARC_flexion, mean_NNP_flexion,	SPARC,	NNP
+**Signal name** : the name of the signal (e.g. "hFlexion_Dos_01) 
 
 ### 3.3 : script structure :
 #### 3.3.1 : visualization :
 1. Load the data
-2. Create scatter plots to visualize the relationship between SPARC and NNP metrics for flexion and extension movements. Each plot will display SPARC on the y-axis and NNP on the x-axis.
-3. Add a regression line to each scatter plot to illustrate the correlation between the two metrics.
-4. report the correlation coefficients (r) and p-values on the plots to indicate the strength and significance of the relationships.
+2. Create scatter plots to visualize the relationship between the whole signal and the segmented signal for both SPARC and NNP metrics. 
+3. Add a regression line and a loess curve to each scatter plot to illustrate the correlation between the two metrics. 
+4. Create Bland-Altman plots to assess the agreement between the whole signal and the segmented signal for both SPARC and NNP metrics. 
 
-#### 3.3.2 : correlation analysis :
-1. perform a spearman correlation analysis to assess the strength and direction of the relationship between SPARC and NNP metrics for both flexion and extension movements. The spearman correlation is chosen because it does not assume a linear relationship between the variables and is less sensitive to outliers than the Pearson correlation.
-2. Report the correlation coefficients and p-values for each comparison to determine the statistical significance of the observed relationships.
-3. perform a pearson correlation analysis to assess the strength and direction of the relationship between SPARC and NNP metrics for both flexion and extension movements. The Pearson correlation is chosen to compare the results with the spearman correlation and to check if the relationship between the variables is linear.
-4. Report the correlation coefficients and p-values for each comparison to determine the statistical significance of the observed relationships.
+#### 3.3.2 : Scatter plots :
+Values from the whole signal are plotted on the y-axis and values from the segmented signal are plotted on the x-axis. A regression line is added to each scatter plot to illustrate the correlation between the two metrics. The loess curve is added to capture any non-linear relationship between the two metrics. The equation of the regression line and the R-squared value are displayed on the plot to quantify the strength of the correlation. 
+
+#### 3.3.3 : Bland-Altman plots :
+Bland-Altman plots are created to assess the agreement between the whole signal and the segmented signal for both SPARC and NNP metrics. The difference between the two measurements (whole signal - segmented signal) is plotted on the y-axis against the average of the two measurements ((whole signal + segmented signal)/2) on the x-axis. The mean difference (bias) and the limits of agreement (mean difference ± 1.96 * standard deviation of the differences) are calculated and displayed on the plot. The Bland-Altman plots help to visualize any systematic bias between the two methods and to identify any potential outliers or trends in the differences across the range of measurements (7)
+
 
 ## 4 : conclusion
 
@@ -115,6 +115,10 @@ the aim of the R project is to investigate the relationship between the whole si
 4.  Balasubramanian S, Melendez-Calderon A, Roby-Brami A, Burdet E. On the analysis of movement smoothness. J Neuroeng Rehabil. 9 déc 2015;12:112. doi:10.1186/s12984-015-0090-9 PubMed PMID: 26651329; PubMed Central PMCID: PMC4674971.
 
 5. Melendez-Calderon A, Shirota C, Balasubramanian S. Estimating Movement Smoothness From Inertial Measurement Units. Front Bioeng Biotechnol. 14 janv 2021;8:558771. doi:10.3389/fbioe.2020.558771
+
+6. https://github.com/ancelingely/Projet_R_Python_M2_REHAB.git
+
+7. Giavarina D. Understanding Bland Altman analysis. Biochem Med. 2015;25(2):141‑51. <a href="doi:10.11613/BM.2015.015" class="uri">doi:10.11613/BM.2015.015</a></p></li>
 
 
 
