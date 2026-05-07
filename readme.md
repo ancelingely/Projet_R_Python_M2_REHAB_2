@@ -33,7 +33,7 @@ Patients were excluded if they had (1) experienced an episode of sciatica within
 #### 1.3.2 : data collection :
 Patients were equipped with Xsens inertial sensors (Awinda) placed on the head, T8, L1, L4 and S1, with a sampling frequency of 60 Hz. Participants completed a standardized task including five repetitions each of maximal lumbar flexion and trunk rotation to the left and right, while standing with feet shoulder-width apart, knees extended. Each assessment lasted approximately 15 minutes. 
 
-**Figure 1**: The figure above shows the velocity profile computed from a patient. Flexion segments are highlighted in blue and extension segments are highlighted in red. 
+**Figure 1**: The figure above shows an example of a velocity profile computed from a patient. Flexion segments are highlighted in blue and extension segments are highlighted in red. This velocity profile is used to calculate the SPARC and NNP metrics for both the whole signal and the segmented signal.
 
 ![Patient_7](img/FlexionDos_007_av_segments.png)
 
