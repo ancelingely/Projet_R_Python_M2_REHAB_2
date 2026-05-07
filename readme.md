@@ -42,10 +42,11 @@ Patients were equipped with Xsens inertial sensors (Awinda) placed on the head, 
 Movement smoothness was evaluated based on the velocity profile given by the gyroscope. It is quantified using two metrics : SPARC and NNP. These metrics are described more in detail in the Python_project
 
 
-$SPARC = - ∫ |dV(ω)/dω| dω$
+$$SPARC = - ∫ |dV(ω)/dω| dω$$
+
 Where V(ω) is the Fourier magnitude spectrum of the velocity profile and ω is the angular frequency.
 
-$NNP = \frac{\text{number of peaks in the velocity profile}}{\text{total duration of the movement}}$
+$$NNP = \frac{\text{number of peaks in the velocity profile}}{\text{total duration of the movement}}$$
 
 ## 2 : Python project : data analysis
 ### 2.1 : aim 
