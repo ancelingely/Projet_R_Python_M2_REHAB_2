@@ -8,58 +8,16 @@ output:
     code_folding: hide
     toc: false
     number_sections: true
+    output_file: "gely.ancelin.html"
 ---
 
 <div style="text-align: justify;">
 
-# Scientific problem
-
-## Context
-
-Low back pain represents the leading cause of disability worldwide. At the individual level, low back pain has substantial consequences, including activity limitations (1) as well as spinal kinematic alterations (2).
-
-Movement smoothness has a potential to provide valuable information about sensorimotor control and to support patient assessment.it reflects the degree to which a movement is performed continuously without interruption, independently of its amplitude or duration(3).In this context, we are leading a study to evaluate **the evolution of movement smoothness in trunck flexion before and after a rehabilitation program in individuals with low back pain**. The assesment consist in performing 5 repetitions of a flexion-extension task while wearing an inertial measurement unit (IMU) on the lower back.
-
-Several methods exist to evaluate movement smoothness, including the spectral arc lenght (SPARC), the log dimensionless jerk (LDJ), the normalized number of peaks (NPP). The SPARC method has been shown to be more valid, sensitive and robust than the other methods. NNP as the advantage of being less computationally intensive and easier to implement (3,4,5). 
-
-In a previous work, Pearson (R=-0,75 ; p = 0,01) and Spearman (R=-0,8 ; p = 0,009) correlations showed a strong and significant negative association between SPARC and NNP when computed on a segmented movement (6) These results indicate a robust monotonic relationship between the two metrics.  
-
-However, the existence of a relationship between SPARC and NNP does not guarantee that their values are stable across different signal processing approaches, such as computing them on the whole signal versus segmented repetitions. Signal segmentation may alter the properties of the data, particularly for frequency-based metrics such as SPARC, which are sensitive to signal duration. On the other hand, the whole signal capture non-task related phases which may also bias the estimation of smoothness (copilote).
+ 
+The scientific context and the protocol are described in the readme file of the GitHub repository. The SPARC and NNP for the whole signal and segmented signal were computed in the Python project, and the results are presented in the Excel file "results_all.xlsx". 
 
 
-## Aim
-
-The aim of this methodological work is to investigate the relationship between the whole signal and the segmented signal for both SPARC and NNP methods in individuals with low back pain. These results will help us to determine if the SPARC and NNP metrics calculated for the whole movement can be used as a proxy for the metrics calculated for each repetition, which would simplify the assessment of movement smoothness in clinical practice.
-
-## Hypothesis 
-
-We hypothesize that NNP metric will show a stronger correlation between the whole signal and the segmented signal than the SPARC metric, due to its lower sensitivity to movement duration and structure. 
-
-## Method
-
-
-### Participants 
-
-10 individuals with low back pain participated in this study. The target population consisted of adults aged between 18 to 65 years with chronic low back pain persisting for more than three months. Participants were eligible for inclusion if they had a body mass index between 18 and 30 kg/m^2 and were undergoing rehabilitation in the physical and rehabilitation medicine department of Montpellier University Hospital
-
-### Outcomes
-
-Movement smoothness was evaluated based on the velocity profile given by the gyroscope.
-
-
-$$SPARC = - ∫ |\frac{dV(ω)}{dω}| dω$$
-
-Where 
-- V(ω) is the Fourier magnitude spectrum of the velocity profile 
-- ω is the angular frequency.
-
-
-$$NNP = \frac{\text{number of peaks}}{\text{total duration of the movement}}$$
-Where the number of peaks is the count of local maxima in the velocity profile computed with the function find_peaks from the scipy library in Python.
-
-# Code 
-
-## Aime of the code
+# Rstudio project  
 
 The aim of this code is to load the SPARC and NNP for the whole signal and segmented signal computed in the Python_project and look for a relationship. 
 
@@ -319,28 +277,28 @@ ba_table
 ```
 The best way to interpret these results would be to define a priori the limit of maximal acceptable difference, based on relevant criteria. Unfortunately, as our method is rarely used, mostly in a flexion movement, there is no consensus about this limit. However, we can look at the percentage bias to have an idea of the agreement between the two methods.
 
-The percentage bias is a measure of the systematic difference between the two methods relative to the mean of the two methods. In that case, the percentage bias is higher for SPARC (49,4%) than for NNP (10,2%). It means that the NNP for the whole signal is overestimating the NNP for the segmented signal by 10,2%, while the SPARC for the whole signal is overestimating the SPARC for the segmented signal by 49,4%. 
+The percentage bias is a measure of the systematic difference between the two methods relative to the mean of the two methods. In that case, the percentage bias is higher for SPARC (49,4%) than for NNP (-5,95%). It means that the NNP for the whole signal is underestimating the NNP for the segmented signal by 5,95%, while the SPARC for the whole signal is overestimating the SPARC for the segmented signal by 49,4%. 
 
 This result is consistent with the correlation results and support our hypothesis. 
 
 # Discussion :
 
-The weak correlation between SPARC_flexion and SPARC, as well as the high percentage bias, suggest that the whole signal and the segmented signal provide different information about movement smoothness when using the SPARC metric. This might be due to the fact that SPARC is more sensitive to movement duration and structure than NNP, which can lead to different values for the whole signal and the segmented signal.
+The weak correlation between SPARC_flexion and SPARC, as well as the high percentage bias, suggest that the whole signal and the segmented signal give different values. It confirms the fact that SPARC should not be computed on the whole signal (4). 
 
-The bias for NNP is moderate (10,2%). It might be due to the fact that the whole signal includes resting period in which postural adjustments can occur. Moreover, the whole signal contains concentric and eccentric movement which lie on different motor control strategies and can have different NNP values. It would be interesting to look at the NNP for the extension movement to see if it is different from the NNP for the flexion movement, and if it can explain the bias between the whole signal and the segmented signal. However, the bias is relatively low and might be acceptable, depending on the context and the criteria for maxiaml acceptable difference.
+The bias for NNP is moderate (-5,95%). It might be due to the fact that the whole signal includes resting periods that may decrease the number of peaks in the whole signal compared to the segmented signal, which only includes the flexion movement. Moreover, the whole signal contains concentric and eccentric movement which lie on different motor control strategies and can have different NNP values. It would be interesting to look at the NNP for the extension movement to see if it is different from the NNP for the flexion movement, and if it can explain the bias between the whole signal and the segmented signal. Finally, it would be interesting to perform a sensitivity analysis to see if prominence chosen in the NNP calculation can influence the bias between the whole signal and the segmented signal.
+
+However, the bias is relatively low and might be acceptable, depending on the context and the criteria for maxiaml acceptable difference.
 
 
 # Perspective : 
 
-Future works should focus on determine a limit of maximal acceptable difference for both NNP and SPARC, based on relevant criteria such as the minimal clinically important difference or the test-retest reliability of the methods. This would allow us to better interpret the results of the Bland-Altman test and to determine if the agreement between the whole signal and the segmented signal is acceptable for clinical use.
-
-It would also be interesting to investigate the role of the resting period and return from flexion in the bias
+Future works should focus on determine a limit of maximal acceptable difference for both NNP and SPARC. This would allow us to better interpret the results of the Bland-Altman test and to determine if the agreement between the whole signal and the segmented signal is acceptable for clinical use.
 
 # Conclusion
 
-the NNP metric shows a strong correlation between the whole signal and the segmented signal, with a low percentage bias (10,2%).The SPARC metric shows a weaker correlation between the whole signal and the segmented signal, with a higher percentage bias (49,4%). 
+the NNP metric shows a strong correlation between the whole signal and the segmented signal, with a low percentage bias (-5,95%).The SPARC metric shows a weaker correlation between the whole signal and the segmented signal, with a higher percentage bias (49,4%). 
 
-Concerning our study on **the evolution of movement smoothness in trunck flexion before and after a rehabilitation program in individuals with low back pain** : Whole signal and segmented signal should not be used as interchangeable measures for SPARC metric. Some caution should be taken when using the whole signal as a proxy for the segmented signal for NNP metric, as there is a moderate bias between the two methods. However, the strong correlation and the relatively low percentage bias suggest that the whole signal might be an acceptable proxy for the segmented signal when using the NNP metric, depending on the context and the criteria for maximal acceptable difference.
+Concerning our study on **the evolution of movement smoothness in trunck flexion before and after a rehabilitation program in individuals with low back pain** : We confirm that the SPARC metric should not be computed on a whole signal. Some caution should be taken when using the whole signal as a proxy for the segmented signal for NNP metric, as there is a moderate bias between the two methods. However, the strong correlation and the relatively low percentage bias suggest that the whole signal might be an acceptable proxy for the segmented signal when using the NNP metric, depending on the context and the criteria for maximal acceptable difference.
 
 # References : 
 

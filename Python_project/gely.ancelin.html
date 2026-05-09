@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>main</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>gely.ancelin</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7510,23 +7510,12 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Run-all-notebooks-in-the-project">Run all notebooks in the project<a class="anchor-link" href="#Run-all-notebooks-in-the-project">¶</a></h1>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [80]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Header for the notebook</span>
@@ -7534,7 +7523,7 @@ a.anchor-link {
 <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
 
 <span class="c1"># Get the current date</span>
-<span class="n">title</span> <span class="o">=</span> <span class="s2">"Movement smoothness as a subclinical marker in low back pain - Segmentation and SPARC/NNP calculation"</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s2">"Movement smoothness as a subclinical marker in low back pain - Segmentation / whole signal analysis "</span>
 <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"</span><span class="si">%d</span><span class="s2"> %B %Y, %H:%M:%S"</span><span class="p">)</span>
 <span class="n">authors</span> <span class="o">=</span> <span class="s2">"Ancelin Gely (and Copilot)"</span>
 
@@ -7554,13 +7543,13 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<h1 id="Movement-smoothness-as-a-subclinical-marker-in-low-back-pain---Segmentation-and-SPARC/NNP-calculation">Movement smoothness as a subclinical marker in low back pain - Segmentation and SPARC/NNP calculation<a class="anchor-link" href="#Movement-smoothness-as-a-subclinical-marker-in-low-back-pain---Segmentation-and-SPARC/NNP-calculation">¶</a></h1>
+<h1 id="Movement-smoothness-as-a-subclinical-marker-in-low-back-pain---Segmentation-/-whole-signal-analysis">Movement smoothness as a subclinical marker in low back pain - Segmentation / whole signal analysis<a class="anchor-link" href="#Movement-smoothness-as-a-subclinical-marker-in-low-back-pain---Segmentation-/-whole-signal-analysis">¶</a></h1>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p>07 May 2026, 09:12:49</p>
+<p>08 May 2026, 11:35:16</p>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -7578,16 +7567,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Scientific-problem">Scientific problem<a class="anchor-link" href="#Scientific-problem">¶</a></h1><h2 id="Context">Context<a class="anchor-link" href="#Context">¶</a></h2><p>Low back pain represents the leading cause of disability worldwide. At the individual level, low back pain has substantial consequences, including activity limitations (1) as well as spinal kinematic alterations (2).</p>
-<p>Movement smoothness has a potential to provide valuable information about sensorimotor control and to support patient assessment.it reflects the degree to which a movement is performed continuously without interruption, independently of its amplitude or duration(3).In this context, we are leading a study to evaluate the evolution of movement smoothness in trunck flexion before and after a rehabilitation program in individuals with low back pain. The assesment consist in performing 5 repetitions of a flexion-extension task while wearing an inertial measurement unit (IMU) on the lower back.</p>
-<p>Several methods exist to evaluate movement smoothness, including the spectral arc lenght (SPARC), the log dimensionless jerk (LDJ), the normalized number of peaks (NPP). The SPARC method has been shown to be more valid, sensitive and robust than the other methods. NNP as the advantage of being less computationally intensive and easier to implement (3,4,5).</p>
-<p>In a previous work, Pearson (R=-0,75 ; p = 0,01) and Spearman (R=-0,8 ; p = 0,009) correlations showed a strong and significant negative association between SPARC and NNP when computed on a segmented movement (6) These results indicate a robust monotonic relationship between the two metrics.</p>
-<p>However, the existence of a relationship between SPARC and NNP does not guarantee that their values are stable across different signal processing approaches, such as computing them on the whole signal versus segmented repetitions. Signal segmentation may alter the properties of the data, particularly for frequency-based metrics such as SPARC, which are sensitive to signal duration. On the other hand, the whole signal capture non-task related phases which may also bias the estimation of smoothness (copilote).</p>
-<h2 id="Aim">Aim<a class="anchor-link" href="#Aim">¶</a></h2><p>The aime of this study is to investigate the relationship between the whole signal and the segmented signal for both SPARC and NNP methods in individuals with low back pain. These results will help us to determine if the SPARC and NNP metrics calculated for the whole movement can be used as a proxy for the metrics calculated for each repetition, which would simplify the assessment of movement smoothness in clinical practice.</p>
-<h2 id="Hypothesis">Hypothesis<a class="anchor-link" href="#Hypothesis">¶</a></h2><p>We hypothesize that NNP metric will show a stronger correlation between the whole signal and the segmented signal than the SPARC metric, due to its lower sensitivity to movement duration and structure.</p>
-<h2 id="Methodology">Methodology<a class="anchor-link" href="#Methodology">¶</a></h2><h3 id="Participants">Participants<a class="anchor-link" href="#Participants">¶</a></h3><p>10 individuals with low back pain participated in this study. The target population consisted of adults aged between 18 to 65 years with chronic low back pain persisting for more than three months. Participants were eligible for inclusion if they had a body mass index between 18 and 30 kg/m^2 and were undergoing rehabilitation in the physical and rehabilitation medicine department of Montpellier University Hospital</p>
-<h3 id="Data-collection-:">Data collection :<a class="anchor-link" href="#Data-collection-:">¶</a></h3><p>Patients were equipped with Xsens inertial sensors (Awinda) placed on the head, T8, L1, L4 and S1, with a sampling frequency of 60 Hz. Participants completed a standardized task including five repetitions each of maximal lumbar flexion and trunk rotation to the left and right, while standing with feet shoulder-width apart, knees extended. Each assessment lasted approximately 15 minutes.</p>
-<h1 id="Python-Project-:">Python Project :<a class="anchor-link" href="#Python-Project-:">¶</a></h1><h2 id="Aim-of-the-code">Aim of the code<a class="anchor-link" href="#Aim-of-the-code">¶</a></h2><p>The aim of this code is to extract the velocity profile from the gyroscope data, segment the movement into repetition of flexion - extension and compute the SPARC and NNP for each repetition and for the whol movement.</p>
+<h1 id="Python-Project-:-Load,-filter-and-analyze-data">Python Project : Load, filter and analyze data<a class="anchor-link" href="#Python-Project-:-Load,-filter-and-analyze-data">¶</a></h1><h2 id="Aim-of-the-code">Aim of the code<a class="anchor-link" href="#Aim-of-the-code">¶</a></h2><p>The aim of this code is to extract the velocity profile from the gyroscope data, segment the movement into repetition of flexion - return from flexion (extension) and compute the SPARC and NNP for flexion and for the whole movement.</p>
 <h2 id="Data-organization">Data organization<a class="anchor-link" href="#Data-organization">¶</a></h2><h3 id="File-name">File name<a class="anchor-link" href="#File-name">¶</a></h3><p>Flexion_Dos_OOX_av.xlsx
 X is the patient ID (1-10)</p>
 <h3 id="File-structure">File structure<a class="anchor-link" href="#File-structure">¶</a></h3><p>The data is organized as a table with different sheets :</p>
@@ -7617,26 +7597,16 @@ X is the patient ID (1-10)</p>
 <li>T12 x, y, z</li>
 <li>T8 x, y, z</li>
 </ul>
-<h2 id="Notebook-organization">Notebook organization<a class="anchor-link" href="#Notebook-organization">¶</a></h2><p>In this jupiter noebook, we will perform the following steps :</p>
+<h2 id="Notebook-organization">Notebook organization<a class="anchor-link" href="#Notebook-organization">¶</a></h2><p>In this jupiter notebook, we will perform the following steps :</p>
 <ol>
 <li>Load the data and filter the gyroscope data for L3 Y (L3)</li>
-<li>Segment the movement into repetitions of flexion-extension</li>
+<li>Segment the movement into repetitions of flexion return from flexion (extension)</li>
 <li>Compute the SPARC and NNP for each repetition and for the whole movement</li>
 <li>Add the results to a dataframe and save it as a xlsx file</li>
 </ol>
-<h3 id="Load-the-data-and-filter-the-gyroscope-data-for-L3-Y-(L3)">Load the data and filter the gyroscope data for L3 Y (L3)<a class="anchor-link" href="#Load-the-data-and-filter-the-gyroscope-data-for-L3-Y-(L3)">¶</a></h3><p>The pandas library is usedto load the data from the excel file and extract the gyroscope data for the L3 segment in the Y direction, which corresponds to the flexion-extension movement.</p>
-<p>A low pass Butterworth filter is applied to the gyroscope data to remove high-frequency noise and obtain a smoother velocity profile. The cutoff frequency is set at 10 Hz, which is appropriate for human movement analysis.</p>
-<h3 id="Segment-the-movement-into-repetition">Segment the movement into repetition<a class="anchor-link" href="#Segment-the-movement-into-repetition">¶</a></h3><p>As the signal is composed of 5 repetitions of flexion-extension, the signal is segmented into 5 segments of flexion and 5 segments of extension corresponding to each repetition.</p>
-<p>The segmentation is performed by transforming the velocity profile into a binary signal where the values above a certain threshold are set to 1 (indicating flexion) and the values below the threshold are set to 0 (indicating extension). The difference between the binary signal is then used to identify the start and end of each repetition. 1 (1-0) indicates the start of a flexion and -1 (0-1) indicates the start of an extension and 0 indicates there is no change in the movement phase.</p>
-<p>Start and end are then associated to peaks in the velocity profile to ensure that the segmentation corresponds to actual movement phases.</p>
-<h3 id="Compute-SPARC-and-NNP">Compute SPARC and NNP<a class="anchor-link" href="#Compute-SPARC-and-NNP">¶</a></h3><h4 id="Spectral-arc-lenght-(SPARC)-computation-:">Spectral arc lenght (SPARC) computation :<a class="anchor-link" href="#Spectral-arc-lenght-(SPARC)-computation-:">¶</a></h4><p>The spectral arc lenght (SPARC) is a frequency-based metric that quantifies the smoothness of a movement by analyzing the Fourier magnitude spectrum of the velocity profile. It is calculated using the following formula:</p>
-<p>$SPARC = - ∫ |dV(ω)/dω| dω$</p>
-<p>Where V(ω) is the Fourier magnitude spectrum of the velocity profile and ω is the angular frequency.</p>
-<p>The SPARC corresponds to the negative integral of the absolute value of the derivative of the Fourier magnitude spectrum with respect to frequency.</p>
-<p>SPARC values typically range from 0 to -∞, with higher values indicating smoother movements. A SPARC value of 0 indicates a perfectly smooth movement, while a SPARC value of -∞ indicates a highly irregular movement.</p>
-<h4 id="Number-of-peaks-(NNP)-computation-:">Number of peaks (NNP) computation :<a class="anchor-link" href="#Number-of-peaks-(NNP)-computation-:">¶</a></h4><p>The number of peaks (NNP) is a time-domain metric that quantifies the smoothness of a movement by counting the number of peaks in the velocity profile. The result is then normalized by the movement duration to account for differences in movement speed. It is calculated using the following formula:</p>
-<p>$NNP = \frac{\text{number of peaks}}{\text{movement duration}}$</p>
-<p>NNP values typically range from 0 to +∞, with lower values indicating smoother movements. A NNP value of 0 indicates a perfectly smooth movement, while higher NNP values indicate more irregular movements with more peaks in the velocity profile.</p>
+<h3 id="Compute-SPARC-and-NNP">Compute SPARC and NNP<a class="anchor-link" href="#Compute-SPARC-and-NNP">¶</a></h3><h4 id="Spectral-arc-lenght-(SPARC)-:">Spectral arc lenght (SPARC) :<a class="anchor-link" href="#Spectral-arc-lenght-(SPARC)-:">¶</a></h4><p>The spectral arc lenght (SPARC) is a frequency-based metric that quantifies the smoothness of a movement by analyzing the Fourier magnitude spectrum of the velocity profile. The velocity profile is transformed into the frequency domain using the Fourier transform, and the SPARC is calculated based on the lenght of the arc. This lenght is calculated by integrating the euclidean distance between the points of the Fourier magnitude spectrum. A smooth movement will have a regular and simple sperctra while an irregular movement will have a more complex spectrum with more hight frequencies. SPARC values typically range from 0 to -∞, with higher values indicating smoother movements. A SPARC value of 0 indicates a perfectly smooth movement, while a SPARC value of -∞ indicates a highly irregular movement.</p>
+<h4 id="Number-of-peaks-(NNP)-:">Number of peaks (NNP) :<a class="anchor-link" href="#Number-of-peaks-(NNP)-:">¶</a></h4><p>The number of peaks (NNP) is a time-domain metric that quantifies the smoothness of a movement by counting the number of peaks in the velocity profile. The result is then normalized by the movement duration to account for differences in movement speed. NNP values typically range from 0 to +∞, with lower values indicating smoother movements. A NNP value of 0 indicates a perfectly smooth movement, while higher NNP values indicate more irregular movements with more peaks in the velocity profile.</p>
+<p><strong>More details on the SPARC and NNP computation can be found in the parts "SPARC computation" and "NNP computation" of the code</strong></p>
 </div>
 </div>
 </div>
@@ -7656,15 +7626,16 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [81]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># If you need to install the libraries, uncomment the following lines and run them once. After that, you can comment them again.</span>
-<span class="c1"># !pip install numpy</span>
-<span class="c1"># !pip install pandas</span>
-<span class="c1"># !pip install matplotlib</span>
-<span class="c1"># !pip install scipy</span>
-<span class="c1"># !pip install IPython</span>
+<span class="c1"># %pip install numpy</span>
+<span class="c1"># %pip install pandas</span>
+<span class="c1"># %pip install matplotlib</span>
+<span class="c1"># %pip install scipy</span>
+<span class="c1"># %pip install IPython</span>
+<span class="c1"># %pip install openpyxl</span>
 
 <span class="c1"># Import library</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -7686,26 +7657,8 @@ X is the patient ID (1-10)</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Function-definitions">Function definitions<a class="anchor-link" href="#Function-definitions">¶</a></h2><p>The 4 steps (load and filter the gyroscope data, segment the movement, compute the SPARC and NNP, and save the results) of the code are defined as functions "analyse_signal" to make the code more organized and reusable.</p>
-<p>It uses the following functions :</p>
-<ul>
-<li>butterworth_filter : to filter the signal with a butterworth filter</li>
-<li>find_peaks : to find the peaks in the velocity profile</li>
-<li>compute_SPARC : to compute the SPARC of the signal</li>
-<li>fft : to compute the Fourier transform of the signal</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="Load-the-data-and-filter-the-gyroscope-data-for-L3-Y-(L3)">Load the data and filter the gyroscope data for L3 Y (L3)<a class="anchor-link" href="#Load-the-data-and-filter-the-gyroscope-data-for-L3-Y-(L3)">¶</a></h3><h4 id="Load-and-reshape-the-data">Load and reshape the data<a class="anchor-link" href="#Load-and-reshape-the-data">¶</a></h4><p>The data is loaded from the excel file using pandas and the gyroscope data for L3 Y is extracted. Data are in frame so the time is calculated by dividing the frame number by the sampling frequency (60 Hz).</p>
-<p>$time = \frac{frame}{\text{sampling frequency}}$</p>
+<p>$$time = \frac{frame}{\text{sampling frequency}}$$</p>
 <h4 id="Filter-the-signal">Filter the signal<a class="anchor-link" href="#Filter-the-signal">¶</a></h4><p>A low pass Butterworth filter is applied to the data to obtain a smoother velocity profile.</p>
 <p>The filter is composed of (copilote):</p>
 <ul>
@@ -7728,7 +7681,7 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [82]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#######################################</span>
@@ -7766,9 +7719,8 @@ X is the patient ID (1-10)</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Segment-detection">Segment detection<a class="anchor-link" href="#Segment-detection">¶</a></h3><p>Patients were asked to perform 5 repetitions of flexion-extension, so the signal is composed of 5 segments of flexion and 5 segments of extension.</p>
-<p>The movement is segmented into repetitions of flexion-extension by transforming the velocity profile into a binary signal using a threshold value. The threshold is set to 0.01 to ensure that only significant movements are detected, while small fluctuations in the signal are ignored.</p>
-<p>The binary signal is created as follows :</p>
+<h3 id="Segment-detection">Segment detection<a class="anchor-link" href="#Segment-detection">¶</a></h3><p>Patients were asked to perform 5 repetitions of flexion-extension, so the signal is composed of 5 segments of flexion and 5 segments of return from flexion (extension).</p>
+<p>The movement is segmented into repetitions of flexion-extension by transforming the velocity profile into a binary signal using a threshold value. The threshold is set to 0.01 to ensure that only significant movements are detected, while small fluctuations in the signal are ignored. The binary signal is created as follows :</p>
 <ul>
 <li>1 : Values above the threshold</li>
 <li>0 : Values below the threshold</li>
@@ -7779,9 +7731,7 @@ X is the patient ID (1-10)</p>
 <li>-1 (0-1) : transition from flexion to extension, indicating the start of an extension phase</li>
 <li>0 : no change in the movement phase</li>
 </ul>
-<p>The start and end of each repetition are then associated with peaks in the velocity profile to ensure that the segmentation corresponds to actual movement phases. The find_peaks function from the scipy library is used to identify the peaks in the velocity profile, which correspond to the maximum velocity during each flexion and extension phase.</p>
-<p>Segments shorter than 0.5 seconds are excluded from the analysis to ensure that only complete repetitions are considered. This is done by calculating the duration of each segment and filtering out those that do not meet the minimum duration criterion.</p>
-<p>Consecutive segments of the same type (flexion or extension) are suppressed to avoid counting artifacts. This is achieved by checking for consecutive segments of the same type and keeping only the first segment in such cases.</p>
+<p>The start and end of each repetition are then associated with peaks in the velocity profile to ensure that the segmentation corresponds to actual movement phases. The find_peaks function from the scipy library is used to identify the peaks in the velocity profile, which correspond to the maximum velocity during each flexion and extension phase. Segments shorter than 0.5 seconds are excluded from the analysis to ensure that only complete repetitions are considered. This is done by calculating the duration of each segment and filtering out those that do not meet the minimum duration criterion. Consecutive segments of the same type (flexion or extension) are suppressed to avoid counting artifacts. This is achieved by checking for consecutive segments of the same type and keeping only the first segment in such cases.</p>
 </div>
 </div>
 </div>
@@ -7790,7 +7740,7 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [83]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#######################################</span>
@@ -7909,25 +7859,26 @@ X is the patient ID (1-10)</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="SPARC-computation">SPARC computation<a class="anchor-link" href="#SPARC-computation">¶</a></h3><p>The SPARC is computed using the following steps (copilote):</p>
+<h3 id="SPARC-computation">SPARC computation<a class="anchor-link" href="#SPARC-computation">¶</a></h3><p>The continue formulation of the SPARC is given by the following formula:</p>
+<p>$$SPARC = - ∫ |\sqrt (\frac{dV(ω)}{dω}) dω |$$</p>
+<p>But in practice, the SPARC is computed using a discrete approximation of the integral, which involves summing the euclidean distance between the points of the Fourier magnitude spectrum at discrete frequency points. The discrete approximation is given by the following formula:</p>
+<p>$$SPARC = - \sum |\sqrt(ds^2 + df^2)|$$</p>
+<p>Where ds and df are the discrete differences of the Fourier magnitude spectrum and the frequency, respectively.</p>
+<p><strong>df computation :</strong> (copilote)</p>
 <ol>
-<li><p>center the velocity profile by subtracting the mean from the signal to ensure that the Fourier transform captures the relevant frequency components of the movement.</p>
-</li>
-<li><p>Compute the Fourier transform of the velocity profile using the fft function from the scipy library to obtain the Fourier magnitude spectrum.</p>
-</li>
-<li><p>Normalize the Fourier magnitude spectrum by dividing it by its maximum value to ensure that the SPARC value is independent of the signal amplitude.</p>
-</li>
-<li><p>apply a log transformation to the normalized Fourier magnitude spectrum to reduce the influence of large values and enhance the contribution of smaller values, which can provide a more accurate representation of the movement smoothness.</p>
-</li>
-<li><p>Calculate the derivative of the Fourier magnitude spectrum with respect to frequency.</p>
-</li>
-<li><p>compute the frequency range over which the SPARC is calculated.</p>
-</li>
-<li><p>Compute the absolute value of the derivative and root square it over the frequency range to obtain the SPARC value.</p>
-</li>
-<li><p>The SPARC value is then negated to ensure that higher values correspond to smoother movements, as the original formula yields negative values for smoother movements.</p>
-</li>
+<li>Compute the Fourier magnitude spectrum of the velocity profile using the Fourier transform.</li>
+<li>Normalize the Fourier magnitude spectrum by dividing it by its maximum value to ensure that the SPARC value is independent of the signal amplitude.</li>
+<li>Apply a log transformation to the normalized Fourier magnitude spectrum to reduce the influence of large values and enhance the contribution of smaller values, which can provide a more accurate representation of the movement smoothness.</li>
+<li>Calculate the derivative of the Fourier magnitude spectrum with respect to frequency to obtain the rate of change of the spectrum across frequencies. This derivative captures how the energy distribution in the frequency domain changes, which is essential for quantifying the smoothness of the movement.</li>
 </ol>
+<p><strong>ds computation :</strong> (copilote)</p>
+<ul>
+<li>Compute the frequency range over which the SPARC is calculated. This range is typically defined based on the sampling frequency and the length of the velocity profile, and it determines the frequencies that are included in the SPARC calculation. The frequency range is often limited to a specific range (e.g., 0 to 10 Hz) to focus on the relevant frequencies for human movement analysis and to exclude high-frequency noise that may not contribute to the smoothness of the movement.</li>
+</ul>
+<p><strong>arc length computation :</strong> (copilote)</p>
+<ul>
+<li>Compute the arc length of the Fourier magnitude spectrum by integrating the euclidean distance between the points of the spectrum across the defined frequency range. The arc length is calculated by summing the square root of the sum of squares of ds and df, which represents the distance between consecutive points in the frequency domain. This integration captures the overall shape and complexity of the spectrum, which is indicative of the smoothness of the movement.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -7936,7 +7887,7 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [84]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#######################################</span>
@@ -7946,34 +7897,28 @@ X is the patient ID (1-10)</p>
 <span class="k">def</span><span class="w"> </span><span class="nf">compute_sparc</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
 
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.05</span>
 
+    <span class="c1"># Compute ds</span>
     <span class="n">spectrum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-
     <span class="n">max_spectrum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span>
-
     <span class="k">if</span> <span class="n">max_spectrum</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 
     <span class="n">spectrum</span> <span class="o">=</span> <span class="n">spectrum</span> <span class="o">/</span> <span class="n">max_spectrum</span>
-
     <span class="n">spectrum</span> <span class="o">+=</span> <span class="mf">1e-10</span>
-
-    <span class="n">freqs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span>
-
-    <span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.05</span>
-
     <span class="n">valid</span> <span class="o">=</span> <span class="n">spectrum</span> <span class="o">&gt;</span> <span class="n">threshold</span>
-
     <span class="n">spectrum</span> <span class="o">=</span> <span class="n">spectrum</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span>
-    <span class="n">freqs</span> <span class="o">=</span> <span class="n">freqs</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span>
-
     <span class="n">log_spectrum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span>
-
-    <span class="n">df</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">freqs</span><span class="p">)</span>
     <span class="n">ds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">log_spectrum</span><span class="p">)</span>
 
+    <span class="c1"># compute df</span>
+    <span class="n">freqs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">freqs</span> <span class="o">=</span> <span class="n">freqs</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">freqs</span><span class="p">)</span>
+    
+    <span class="c1"># compute arc length</span>
     <span class="n">arc_length</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">df</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">ds</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="o">-</span><span class="n">arc_length</span>
@@ -7982,12 +7927,65 @@ X is the patient ID (1-10)</p>
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="NNP-computation">NNP computation<a class="anchor-link" href="#NNP-computation">¶</a></h3><p>The number of peaks (NNP) is computed by counting the number of peaks in the velocity profile using the find_peaks function from the scipy library. The prominence parameter is set to 0.005 to ensure that only significant peaks are counted, while small fluctuations in the signal are ignored. The number of peaks is then normalized by the movement duration to account for differences in movement speed.</p>
+<p>$$NNP = \frac{\text{number of peaks}}{\text{movement duration}}$$</p>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [85]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_nnp</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">prominence</span><span class="o">=</span><span class="mf">0.005</span><span class="p">):</span>
+
+    <span class="n">peaks</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">prominence</span><span class="o">=</span><span class="n">prominence</span><span class="p">)</span>
+    <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">duration</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="n">nnp</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">peaks</span><span class="p">)</span> <span class="o">/</span> <span class="n">duration</span>
+
+    <span class="k">return</span> <span class="n">nnp</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="analyse_signal_v2-computation">analyse_signal_v2 computation<a class="anchor-link" href="#analyse_signal_v2-computation">¶</a></h3><p>The analyse_signal_v2 function performs the following steps:</p>
+<ol>
+<li>Load the data and filter the gyroscope data for L3 Y (L3)</li>
+<li>Segment the movement into repetitions of flexion return from flexion (extension)</li>
+<li>Compute the SPARC and NNP for each flexion and for the whole movement</li>
+<li>Add the results to a dataframe.</li>
+</ol>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [86]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">analyze_signal_v2</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">column_name</span><span class="p">):</span>
@@ -8026,104 +8024,34 @@ X is the patient ID (1-10)</p>
     <span class="c1">########### SPARC #################</span>
     <span class="c1">###################################</span>
 
+    <span class="c1"># Compute SPARC for flexion segments</span>
     <span class="n">positive_sparc</span> <span class="o">=</span> <span class="p">[]</span>
-
     <span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">positive_segments</span><span class="p">:</span>
 
         <span class="n">positive_sparc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
             <span class="n">compute_sparc</span><span class="p">(</span><span class="n">omega_filt</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">],</span> <span class="n">fs</span><span class="p">)</span>
         <span class="p">)</span>
 
-    <span class="n">negative_sparc</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">negative_segments</span><span class="p">:</span>
-
-        <span class="n">negative_sparc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="n">compute_sparc</span><span class="p">(</span><span class="n">omega_filt</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">],</span> <span class="n">fs</span><span class="p">)</span>
-        <span class="p">)</span>
-
+    <span class="c1"># Compute SPARC for the whole signal</span>
     <span class="n">SPARC</span> <span class="o">=</span> <span class="n">compute_sparc</span><span class="p">(</span><span class="n">omega_filt</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
 
     <span class="c1">###################################</span>
     <span class="c1">############ NNP ##################</span>
     <span class="c1">###################################</span>
 
-    <span class="n">extension_peak_counts</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">negative_segments</span><span class="p">:</span>
-
-        <span class="n">segment_time</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="s2">"Time (s)"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">e</span><span class="p">]</span>
-
-        <span class="n">segment_omega</span> <span class="o">=</span> <span class="n">omega_filt</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">e</span><span class="p">]</span>
-
-        <span class="n">peaks</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span>
-            <span class="n">segment_omega</span><span class="p">,</span>
-            <span class="n">prominence</span><span class="o">=</span><span class="mf">0.01</span>
-        <span class="p">)</span>
-
-        <span class="n">peak_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">peaks</span><span class="p">)</span>
-
-        <span class="n">duration</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">segment_time</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="o">-</span> <span class="n">segment_time</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="p">)</span>
-
-        <span class="n">normalized_peak_count</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">peak_count</span> <span class="o">/</span> <span class="n">duration</span>
-            <span class="k">if</span> <span class="n">duration</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-        <span class="p">)</span>
-
-        <span class="n">extension_peak_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="n">normalized_peak_count</span>
-        <span class="p">)</span>
-
+    <span class="c1"># Compute NNP for flexion segments</span>
     <span class="n">flexion_peak_counts</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">positive_segments</span><span class="p">:</span>
-
-        <span class="n">segment_time</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="s2">"Time (s)"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">e</span><span class="p">]</span>
-
         <span class="n">segment_omega</span> <span class="o">=</span> <span class="n">omega_filt</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">e</span><span class="p">]</span>
-
-        <span class="n">peaks</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span>
-            <span class="n">segment_omega</span><span class="p">,</span>
-            <span class="n">prominence</span><span class="o">=</span><span class="mf">0.01</span>
-        <span class="p">)</span>
-
-        <span class="n">peak_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">peaks</span><span class="p">)</span>
-
-        <span class="n">duration</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">segment_time</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="o">-</span> <span class="n">segment_time</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="p">)</span>
-
-        <span class="n">normalized_peak_count</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">peak_count</span> <span class="o">/</span> <span class="n">duration</span>
-            <span class="k">if</span> <span class="n">duration</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-        <span class="p">)</span>
-
+        <span class="n">segment_time</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="s2">"Time (s)"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">e</span><span class="p">]</span>
         <span class="n">flexion_peak_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="n">normalized_peak_count</span>
+            <span class="n">compute_nnp</span><span class="p">(</span><span class="n">segment_omega</span><span class="p">,</span><span class="n">segment_time</span><span class="p">)</span>
         <span class="p">)</span>
 
-    <span class="c1">###################################</span>
-    <span class="c1">######## TOTAL SIGNAL NNP #########</span>
-    <span class="c1">###################################</span>
+    <span class="c1"># Whole signal NNP</span>
+    <span class="n">nnp</span> <span class="o">=</span> <span class="n">compute_nnp</span><span class="p">(</span><span class="n">omega_filt</span><span class="p">,</span> <span class="n">signal</span><span class="p">[</span><span class="s2">"Time (s)"</span><span class="p">])</span>
 
-    <span class="n">peaks</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span>
-        <span class="n">omega_filt</span><span class="p">,</span>
-        <span class="n">prominence</span><span class="o">=</span><span class="mf">0.005</span>
-    <span class="p">)</span>
-
-    <span class="n">total_duration</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">signal</span><span class="p">[</span><span class="s2">"Time (s)"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="o">-</span> <span class="n">signal</span><span class="p">[</span><span class="s2">"Time (s)"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="p">)</span>
-
-    <span class="n">nnp</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="nb">len</span><span class="p">(</span><span class="n">peaks</span><span class="p">)</span> <span class="o">/</span> <span class="n">total_duration</span>
-        <span class="k">if</span> <span class="n">total_duration</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-    <span class="p">)</span>
 
     <span class="c1">###################################</span>
     <span class="c1">######## RESULTS TABLE ############</span>
@@ -8132,20 +8060,11 @@ X is the patient ID (1-10)</p>
     <span class="n">signal_name</span> <span class="o">=</span> <span class="n">file_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-
         <span class="s2">"Signal name"</span><span class="p">:</span> <span class="p">[</span><span class="n">signal_name</span><span class="p">],</span>
-
         <span class="s2">"SPARC"</span><span class="p">:</span> <span class="p">[</span><span class="n">SPARC</span><span class="p">],</span>
-
         <span class="s2">"NNP"</span><span class="p">:</span> <span class="p">[</span><span class="n">nnp</span><span class="p">],</span>
-
-        <span class="s2">"mean_SPARC_flexion"</span><span class="p">:</span> <span class="p">[</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">positive_sparc</span><span class="p">)</span>
-        <span class="p">],</span>
-
-        <span class="s2">"mean_NNP_flexion"</span><span class="p">:</span> <span class="p">[</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">flexion_peak_counts</span><span class="p">)</span>
-        <span class="p">]</span>
+        <span class="s2">"mean_SPARC_flexion"</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">positive_sparc</span><span class="p">)],</span>
+        <span class="s2">"mean_NNP_flexion"</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">flexion_peak_counts</span><span class="p">)]</span>
     <span class="p">})</span>
 
     <span class="k">return</span> <span class="n">results</span>
@@ -8154,33 +8073,47 @@ X is the patient ID (1-10)</p>
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Analyse-signals-from-all-patients">Analyse signals from all patients<a class="anchor-link" href="#Analyse-signals-from-all-patients">¶</a></h1><p>As the folder data containes data from 10 patients called Flexion_Dos_OOX_av.xlsx, where X is the patient ID (1-10), we can loop through all the files and apply the analyse_signal_v2 function to each file to extract the SPARC and NNP values for each patient. The results can then be compiled into a single dataframe for further analysis and comparison across patients.</p>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [87]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create a loop to analyze all the signals and concatenate the results in a single dataframe.</span>
-<span class="c1"># be carefull with the 10th file because it is named "FlexionDos_010_av.xlsx" and not "FlexionDos_0010_av.xlsx".</span>
-
 <span class="n">results_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
-
     <span class="n">file_number</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">"</span>
-
     <span class="n">file_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"data/FlexionDos_</span><span class="si">{</span><span class="n">file_number</span><span class="si">}</span><span class="s2">_av.xlsx"</span>
-
     <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">"Segment Angular Velocity"</span>
-
     <span class="n">column_name</span> <span class="o">=</span> <span class="s2">"L3 y"</span>
-
     <span class="n">result</span> <span class="o">=</span> <span class="n">analyze_signal_v2</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">column_name</span><span class="p">)</span>
-
     <span class="n">results_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">results_all</span><span class="p">,</span> <span class="n">result</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Results">Results<a class="anchor-link" href="#Results">¶</a></h1>
 </div>
 </div>
 </div>
@@ -8189,7 +8122,7 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [88]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">results_all</span>
@@ -8203,7 +8136,7 @@ X is the patient ID (1-10)</p>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[88]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -8237,7 +8170,7 @@ X is the patient ID (1-10)</p>
 <td>-6.874907</td>
 <td>1.670103</td>
 <td>-4.159162</td>
-<td>1.275352</td>
+<td>1.804946</td>
 </tr>
 <tr>
 <th>1</th>
@@ -8245,7 +8178,7 @@ X is the patient ID (1-10)</p>
 <td>-6.735183</td>
 <td>3.946588</td>
 <td>-5.349642</td>
-<td>3.040954</td>
+<td>3.452343</td>
 </tr>
 <tr>
 <th>2</th>
@@ -8253,7 +8186,7 @@ X is the patient ID (1-10)</p>
 <td>-11.533392</td>
 <td>3.625192</td>
 <td>-5.434564</td>
-<td>4.058155</td>
+<td>4.445737</td>
 </tr>
 <tr>
 <th>3</th>
@@ -8269,7 +8202,7 @@ X is the patient ID (1-10)</p>
 <td>-12.947031</td>
 <td>5.095796</td>
 <td>-15.475841</td>
-<td>4.736775</td>
+<td>5.819458</td>
 </tr>
 <tr>
 <th>5</th>
@@ -8277,7 +8210,7 @@ X is the patient ID (1-10)</p>
 <td>-10.508508</td>
 <td>2.743022</td>
 <td>-3.215461</td>
-<td>2.022103</td>
+<td>2.559037</td>
 </tr>
 <tr>
 <th>6</th>
@@ -8285,7 +8218,7 @@ X is the patient ID (1-10)</p>
 <td>-7.602682</td>
 <td>1.015572</td>
 <td>-3.276752</td>
-<td>0.800853</td>
+<td>0.961883</td>
 </tr>
 <tr>
 <th>7</th>
@@ -8293,7 +8226,7 @@ X is the patient ID (1-10)</p>
 <td>-9.216218</td>
 <td>3.790782</td>
 <td>-6.385948</td>
-<td>3.430441</td>
+<td>3.924780</td>
 </tr>
 <tr>
 <th>8</th>
@@ -8301,7 +8234,7 @@ X is the patient ID (1-10)</p>
 <td>-8.477055</td>
 <td>1.893048</td>
 <td>-2.691233</td>
-<td>1.888556</td>
+<td>2.456543</td>
 </tr>
 <tr>
 <th>9</th>
@@ -8309,7 +8242,7 @@ X is the patient ID (1-10)</p>
 <td>-9.464665</td>
 <td>4.101877</td>
 <td>-6.167191</td>
-<td>3.932310</td>
+<td>4.360160</td>
 </tr>
 </tbody>
 </table>
@@ -8323,7 +8256,7 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [89]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Save as xlsx in the folder "results"</span>
