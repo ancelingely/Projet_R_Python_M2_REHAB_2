@@ -127,14 +127,14 @@ ggplot(data_subject, aes(x = mean_NNP_flexion, y = NNP)) +
 **Observation** : There is a positive correlation between NNP_flexion and NNP. Le loess fit (red line) and the linear fit (blue line) are quite similar, indicating that the relationship between NNP_flexion and NNP is approximately linear.
 
 **Results**: 
-the slope value (0.97) indicates that for every unit increase the segmented signal, there is an expected increase of 0.97 units in the whole signal. The intercept value (0.36) suggests that when NNP_flexion is zero, NNP is expected to be 0.36. 
+the slope value (0.88) indicates that for every unit increase the segmented signal, there is an expected increase of 0.88 units in the whole signal. The intercept value (0.35) suggests that when NNP_flexion is zero, NNP is expected to be 0.35. 
 
-The R-squared value (0.96) indicates that approximately 96% of the variability in NNP_flexion can be explained by the linear relationship with NNP. This suggests that the number of peaks in the segmented signal (NNP_flexion) is strongly correlated with the number of peaks in the whole signal (NNP).
+The R-squared value (0.98) indicates that approximately 98% of the variability in NNP_flexion can be explained by the linear relationship with NNP. This suggests that the number of peaks in the segmented signal (NNP_flexion) is strongly correlated with the number of peaks in the whole signal (NNP).
 
 **Interpretation**
 This suggests that the whole signal and the segmented signal provide similar information about movement smoothness when using the NNP metric. 
 
-The non-zero intercept value (0.36) might be due to the fact that the whole signal includes resting period in which postural adjustments can occur, which can increase the number of peaks in the whole signal compared to the segmented signal.
+
 
 ## plot SPARC_flexion as a function of SPARC
 
@@ -156,7 +156,7 @@ ggplot(data_subject, aes(x = mean_SPARC_flexion, y = SPARC)) +
 
 **Observation** : No clear linear relationship between SPARC_flexion and SPARC. The loess fit (red line) shows a non-linear pattern. 
 
-**Results** : The slope value (0.37) indicates that for every unit increase in SPARC_flexion, there is an expected increase of 0.37 units in SPARC. The intercept value (-7.1) suggests that when SPARC_flexion is zero, SPARC is expected to be -7.1.
+**Results** : The slope value (0.17) indicates that for every unit increase in SPARC_flexion, there is an expected increase of 0.17 units in SPARC. The intercept value (-2.3) suggests that when SPARC_flexion is zero, SPARC is expected to be -2.3.
 
 **Interpretation** : This suggests that the whole signal and the segmented signal provide different information about movement smoothness when using the SPARC metric. 
 
@@ -275,9 +275,9 @@ ba_table <- data.frame(
 
 ba_table
 ```
-The best way to interpret these results would be to define a priori the limit of maximal acceptable difference, based on relevant criteria. Unfortunately, as our method is rarely used, mostly in a flexion movement, there is no consensus about this limit. However, we can look at the percentage bias to have an idea of the agreement between the two methods.
+The best way to interpret these results would be to define a priori the limit of maximal acceptable difference, based on relevant criteria. Unfortunately, as our method is rarely used, mostly in a trunk flexion movement, there is no consensus about this limit. However, we can look at the percentage bias to have an idea of the agreement between the two methods.
 
-The percentage bias is a measure of the systematic difference between the two methods relative to the mean of the two methods. In that case, the percentage bias is higher for SPARC (49,4%) than for NNP (-5,95%). It means that the NNP for the whole signal is underestimating the NNP for the segmented signal by 5,95%, while the SPARC for the whole signal is overestimating the SPARC for the segmented signal by 49,4%. 
+The percentage bias is a measure of the systematic difference between the two methods relative to the mean of the two methods. In that case, the percentage bias is higher for SPARC (-14,7%) than for NNP (-2,9%). It means that the NNP for the whole signal is underestimating the NNP for the segmented signal by 2.9%, while the SPARC for the whole signal is underestimating the SPARC for the segmented signal by 14,6%. 
 
 This result is consistent with the correlation results and support our hypothesis. 
 
@@ -285,7 +285,7 @@ This result is consistent with the correlation results and support our hypothesi
 
 The weak correlation between SPARC_flexion and SPARC, as well as the high percentage bias, suggest that the whole signal and the segmented signal give different values. It confirms the fact that SPARC should not be computed on the whole signal (4). 
 
-The bias for NNP is moderate (-5,95%). It might be due to the fact that the whole signal includes resting periods that may decrease the number of peaks in the whole signal compared to the segmented signal, which only includes the flexion movement. Moreover, the whole signal contains concentric and eccentric movement which lie on different motor control strategies and can have different NNP values. It would be interesting to look at the NNP for the extension movement to see if it is different from the NNP for the flexion movement, and if it can explain the bias between the whole signal and the segmented signal. Finally, it would be interesting to perform a sensitivity analysis to see if prominence chosen in the NNP calculation can influence the bias between the whole signal and the segmented signal.
+The bias for NNP is low (-2,9%). It might be due to the fact that the whole signal includes resting periods that may decrease the number of peaks in the whole signal compared to the segmented signal, which only includes the flexion movement. Moreover, the whole signal contains concentric and eccentric movement which lie on different motor control strategies and can have different NNP values. It would be interesting to look at the NNP for the extension movement to see if it is different from the NNP for the flexion movement, and if it can explain the bias between the whole signal and the segmented signal. 
 
 However, the bias is relatively low and might be acceptable, depending on the context and the criteria for maxiaml acceptable difference.
 
@@ -296,9 +296,9 @@ Future works should focus on determine a limit of maximal acceptable difference 
 
 # Conclusion
 
-the NNP metric shows a strong correlation between the whole signal and the segmented signal, with a low percentage bias (-5,95%).The SPARC metric shows a weaker correlation between the whole signal and the segmented signal, with a higher percentage bias (49,4%). 
+the NNP metric shows a strong correlation between the whole signal and the segmented signal, with a low percentage bias (-2.9%).The SPARC metric shows a weaker correlation between the whole signal and the segmented signal, with a higher percentage bias (-14,6%). 
 
-Concerning our study on **the evolution of movement smoothness in trunck flexion before and after a rehabilitation program in individuals with low back pain** : We confirm that the SPARC metric should not be computed on a whole signal. Some caution should be taken when using the whole signal as a proxy for the segmented signal for NNP metric, as there is a moderate bias between the two methods. However, the strong correlation and the relatively low percentage bias suggest that the whole signal might be an acceptable proxy for the segmented signal when using the NNP metric, depending on the context and the criteria for maximal acceptable difference.
+Concerning our study on **the evolution of movement smoothness in trunck flexion before and after a rehabilitation program in individuals with low back pain** : We confirm that the SPARC metric should not be computed on a whole signal. The strong correlation and the relatively low percentage bias suggest that the whole signal might be an acceptable proxy for the segmented signal when using the NNP metric, depending on the context and the criteria for maximal acceptable difference.
 
 # References : 
 
