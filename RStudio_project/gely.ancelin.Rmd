@@ -18,7 +18,7 @@ output:
  
 # Scientific problem
 
-## Context
+## Context. 
 
 Low back pain represents the leading cause of disability worldwide. At the individual level, low back pain has substantial consequences, including activity limitations (1) as well as spinal kinematic alterations (2).
 
