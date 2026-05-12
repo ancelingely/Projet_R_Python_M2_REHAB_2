@@ -192,8 +192,8 @@ ggplot(data_subject, aes(x = mean_SPARC_flexion, y = SPARC)) +
   #geom_smooth(method = "lm", se = FALSE) +
   geom_smooth(method = "loess", se = FALSE, color = "red") +
   #geom_abline(slope = 1, intercept = 0, color = "green", linetype = "dashed") +
-  stat_regline_equation(label.x = -9, label.y = -13) +
-  stat_cor(method = "pearson", label.x = -9, label.y = - 14) +  
+  stat_regline_equation(label.x = -1.5, label.y = -5) +
+  stat_cor(method = "pearson", label.x = -1.5, label.y = - 5.5) +  
   labs(title = "SPARC_flexion vs SPARC",
        x = "mean_SPARC_flexion",
        y = "SPARC") +
@@ -203,7 +203,7 @@ ggplot(data_subject, aes(x = mean_SPARC_flexion, y = SPARC)) +
 
 **Observation** : No clear linear relationship between SPARC_flexion and SPARC. The loess fit (red line) shows a non-linear pattern. 
 
-**Results** : The slope value (0.17) indicates that for every unit increase in SPARC_flexion, there is an expected increase of 0.17 units in SPARC. The intercept value (-2.3) suggests that when SPARC_flexion is zero, SPARC is expected to be -2.3.
+**Results** : The slope value (0.84) indicates that for every unit increase in SPARC_flexion, there is an expected increase of 0.84 units in SPARC. The intercept value (-1.6) suggests that when SPARC_flexion is zero, SPARC is expected to be -1.6.
 
 **Interpretation** : This suggests that the whole signal and the segmented signal provide different information about movement smoothness when using the SPARC metric. 
 
@@ -329,7 +329,7 @@ ba_table
 ```
 The best way to interpret these results would be to define a priori the limit of maximal acceptable difference, based on relevant criteria. Unfortunately, as our method is rarely used, mostly in a trunk flexion movement, there is no consensus about this limit. However, we can look at the percentage bias to have an idea of the agreement between the two methods.
 
-The percentage bias is a measure of the systematic difference between the two methods relative to the mean of the two methods. In that case, the percentage bias is higher for SPARC (-14,7%) than for NNP (-2,9%). It means that the NNP for the whole signal is underestimating the NNP for the segmented signal by 2.9%, while the SPARC for the whole signal is underestimating the SPARC for the segmented signal by 14,6%. 
+The percentage bias is a measure of the systematic difference between the two methods relative to the mean of the two methods. In that case, the percentage bias is higher for SPARC (57,7%) than for NNP (-2,9%). It means that the NNP for the whole signal is underestimating the NNP for the segmented signal by 2.9%, while the SPARC for the whole signal is overerestimating the SPARC for the segmented signal by 57,6%. 
 
 This result is consistent with the correlation results and support our hypothesis. 
 
@@ -348,7 +348,7 @@ Future works should focus on determine a limit of maximal acceptable difference 
 
 ## Conclusion
 
-NNP shows a strong relationship between whole-signal and segmented-signal approaches, with a low percentage bias (-2.9%). In contrast, SPARC shows weaker agreement, with a higher percentage bias (-14.6%).
+NNP shows a strong relationship between whole-signal and segmented-signal approaches, with a low percentage bias (-2.9%). In contrast, SPARC shows weaker agreement, with a higher percentage bias (-57.6%).
 
 In the context of trunk flexion in individuals with low back pain before and after rehabilitation, these results suggest that SPARC should be interpreted cautiously when computed on whole signals. For NNP, the agreement appears acceptable, although further analysis is needed to confirm the impact of heteroscedasticity.
 
