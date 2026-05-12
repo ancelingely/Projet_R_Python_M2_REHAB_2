@@ -7515,7 +7515,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [80]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Header for the notebook</span>
@@ -7523,7 +7523,7 @@ a.anchor-link {
 <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
 
 <span class="c1"># Get the current date</span>
-<span class="n">title</span> <span class="o">=</span> <span class="s2">"Movement smoothness as a subclinical marker in low back pain - Segmentation / whole signal analysis "</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s2">"Movement smoothness as a subclinical marker in low back pain - is whole signal analysis pertinent? "</span>
 <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"</span><span class="si">%d</span><span class="s2"> %B %Y, %H:%M:%S"</span><span class="p">)</span>
 <span class="n">authors</span> <span class="o">=</span> <span class="s2">"Ancelin Gely (and Copilot)"</span>
 
@@ -7543,13 +7543,13 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<h1 id="Movement-smoothness-as-a-subclinical-marker-in-low-back-pain---Segmentation-/-whole-signal-analysis">Movement smoothness as a subclinical marker in low back pain - Segmentation / whole signal analysis<a class="anchor-link" href="#Movement-smoothness-as-a-subclinical-marker-in-low-back-pain---Segmentation-/-whole-signal-analysis">¶</a></h1>
+<h1 id="Movement-smoothness-as-a-subclinical-marker-in-low-back-pain---is-whole-signal-analysis-pertinent?">Movement smoothness as a subclinical marker in low back pain - is whole signal analysis pertinent?<a class="anchor-link" href="#Movement-smoothness-as-a-subclinical-marker-in-low-back-pain---is-whole-signal-analysis-pertinent?">¶</a></h1>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p>08 May 2026, 11:35:16</p>
+<p>10 May 2026, 19:23:04</p>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -7604,8 +7604,8 @@ X is the patient ID (1-10)</p>
 <li>Compute the SPARC and NNP for each repetition and for the whole movement</li>
 <li>Add the results to a dataframe and save it as a xlsx file</li>
 </ol>
-<h3 id="Compute-SPARC-and-NNP">Compute SPARC and NNP<a class="anchor-link" href="#Compute-SPARC-and-NNP">¶</a></h3><h4 id="Spectral-arc-lenght-(SPARC)-:">Spectral arc lenght (SPARC) :<a class="anchor-link" href="#Spectral-arc-lenght-(SPARC)-:">¶</a></h4><p>The spectral arc lenght (SPARC) is a frequency-based metric that quantifies the smoothness of a movement by analyzing the Fourier magnitude spectrum of the velocity profile. The velocity profile is transformed into the frequency domain using the Fourier transform, and the SPARC is calculated based on the lenght of the arc. This lenght is calculated by integrating the euclidean distance between the points of the Fourier magnitude spectrum. A smooth movement will have a regular and simple sperctra while an irregular movement will have a more complex spectrum with more hight frequencies. SPARC values typically range from 0 to -∞, with higher values indicating smoother movements. A SPARC value of 0 indicates a perfectly smooth movement, while a SPARC value of -∞ indicates a highly irregular movement.</p>
-<h4 id="Number-of-peaks-(NNP)-:">Number of peaks (NNP) :<a class="anchor-link" href="#Number-of-peaks-(NNP)-:">¶</a></h4><p>The number of peaks (NNP) is a time-domain metric that quantifies the smoothness of a movement by counting the number of peaks in the velocity profile. The result is then normalized by the movement duration to account for differences in movement speed. NNP values typically range from 0 to +∞, with lower values indicating smoother movements. A NNP value of 0 indicates a perfectly smooth movement, while higher NNP values indicate more irregular movements with more peaks in the velocity profile.</p>
+<h3 id="Compute-SPARC-and-NNP">Compute SPARC and NNP<a class="anchor-link" href="#Compute-SPARC-and-NNP">¶</a></h3><h4 id="Spectral-arc-lenght-(SPARC)-:">Spectral arc lenght (SPARC) :<a class="anchor-link" href="#Spectral-arc-lenght-(SPARC)-:">¶</a></h4><p>The spectral arc lenght (SPARC) is a frequency-based metric that quantifies the smoothness of a movement by analyzing the Fourier magnitude spectrum of the velocity profile. The velocity profile is transformed into the frequency domain using the Fourier transform, and the SPARC is calculated based on the lenght of the arc. This lenght is calculated by integrating the euclidean distance between the points of the Fourier magnitude spectrum. A smooth movement will have a regular and simple sperctra while an irregular movement will have a more complex spectrum with more hight frequencies. SPARC values typically range from 0 to -∞. A SPARC value of 0 indicates a perfectly smooth movement, while a SPARC value of -∞ indicates a highly irregular movement (4, copilote)</p>
+<h4 id="Number-of-peaks-(NNP)-:">Number of peaks (NNP) :<a class="anchor-link" href="#Number-of-peaks-(NNP)-:">¶</a></h4><p>The number of peaks (NNP) is a time-domain metric that quantifies the smoothness of a movement by counting the number of peaks in the velocity profile. The result is then normalized by the movement duration. NNP values typically range from 0 to +∞, with lower values indicating smoother movements. A NNP value of 0 indicates a perfectly smooth movement, while higher NNP values indicate more irregular movements with more peaks in the velocity profile (copilote).</p>
 <p><strong>More details on the SPARC and NNP computation can be found in the parts "SPARC computation" and "NNP computation" of the code</strong></p>
 </div>
 </div>
@@ -7626,7 +7626,7 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [81]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># If you need to install the libraries, uncomment the following lines and run them once. After that, you can comment them again.</span>
@@ -7657,7 +7657,7 @@ X is the patient ID (1-10)</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Load-the-data-and-filter-the-gyroscope-data-for-L3-Y-(L3)">Load the data and filter the gyroscope data for L3 Y (L3)<a class="anchor-link" href="#Load-the-data-and-filter-the-gyroscope-data-for-L3-Y-(L3)">¶</a></h3><h4 id="Load-and-reshape-the-data">Load and reshape the data<a class="anchor-link" href="#Load-and-reshape-the-data">¶</a></h4><p>The data is loaded from the excel file using pandas and the gyroscope data for L3 Y is extracted. Data are in frame so the time is calculated by dividing the frame number by the sampling frequency (60 Hz).</p>
+<h3 id="Load-the-data-and-filter-the-gyroscope-data-for-L3-Y-(L3)">Load the data and filter the gyroscope data for L3 Y (L3)<a class="anchor-link" href="#Load-the-data-and-filter-the-gyroscope-data-for-L3-Y-(L3)">¶</a></h3><h4 id="Load-and-reshape-the-data">Load and reshape the data<a class="anchor-link" href="#Load-and-reshape-the-data">¶</a></h4><p>The data is loaded from the excel file using pandas and the gyroscope data for L3 Y is extracted. Frame to time conversion is necessary. So the time is calculated by dividing the frame number by the sampling frequency (60 Hz).</p>
 <p>$$time = \frac{frame}{\text{sampling frequency}}$$</p>
 <h4 id="Filter-the-signal">Filter the signal<a class="anchor-link" href="#Filter-the-signal">¶</a></h4><p>A low pass Butterworth filter is applied to the data to obtain a smoother velocity profile.</p>
 <p>The filter is composed of (copilote):</p>
@@ -7681,7 +7681,7 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [82]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#######################################</span>
@@ -7692,18 +7692,17 @@ X is the patient ID (1-10)</p>
 
     <span class="n">signal</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">)</span>
 
+    <span class="c1"># Frame to time conversion</span>
     <span class="k">if</span> <span class="s2">"Time (s)"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">signal</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-
         <span class="k">if</span> <span class="s2">"Frame"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">signal</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Time (s) or Frame column missing"</span><span class="p">)</span>
-
         <span class="n">signal</span><span class="p">[</span><span class="s2">"Time (s)"</span><span class="p">]</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="s2">"Frame"</span><span class="p">]</span> <span class="o">/</span> <span class="n">fs</span>
 
     <span class="n">omega</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="n">omega</span> <span class="o">=</span> <span class="n">omega</span> <span class="o">*</span> <span class="mi">60</span>
 
     <span class="c1"># Low-pass filter</span>
     <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">fc</span> <span class="o">/</span> <span class="p">(</span><span class="n">fs</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">btype</span><span class="o">=</span><span class="s2">"low"</span><span class="p">)</span>
-
     <span class="n">omega_filt</span> <span class="o">=</span> <span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">omega</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">signal</span><span class="p">,</span> <span class="n">omega_filt</span>
@@ -7728,10 +7727,10 @@ X is the patient ID (1-10)</p>
 <p>Then, the difference between the binary signal is calculated to identify the start and end of each repetition. The difference is computed as follows :</p>
 <ul>
 <li>1 (1-0) : transition from extension to flexion, indicating the start of a flexion phase</li>
-<li>-1 (0-1) : transition from flexion to extension, indicating the start of an extension phase</li>
-<li>0 : no change in the movement phase</li>
+<li>-1 (0-1) : transition from flexion to extension, indicating the end of the flexion phase</li>
+<li>0 : no transition.</li>
 </ul>
-<p>The start and end of each repetition are then associated with peaks in the velocity profile to ensure that the segmentation corresponds to actual movement phases. The find_peaks function from the scipy library is used to identify the peaks in the velocity profile, which correspond to the maximum velocity during each flexion and extension phase. Segments shorter than 0.5 seconds are excluded from the analysis to ensure that only complete repetitions are considered. This is done by calculating the duration of each segment and filtering out those that do not meet the minimum duration criterion. Consecutive segments of the same type (flexion or extension) are suppressed to avoid counting artifacts. This is achieved by checking for consecutive segments of the same type and keeping only the first segment in such cases.</p>
+<p>The start and end of each repetition are then associated with peaks in the velocity profile to ensure that the segmentation corresponds to actual movement phases. The find_peaks function from the scipy library is used to identify the peaks in the velocity profile, which correspond to the maximum velocity during each flexion and extension phase. A segment correspond to a period where the peak value is located between the start and end points. Segments shorter than 0.5 seconds are then excluded from the analysis to ensure that only real repetitions are considered. Consecutive segments of the same type (flexion or extension) are suppressed to avoid counting artifacts.</p>
 </div>
 </div>
 </div>
@@ -7740,7 +7739,7 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [83]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#######################################</span>
@@ -7751,7 +7750,6 @@ X is the patient ID (1-10)</p>
 
     <span class="c1"># Negative segments</span>
     <span class="n">neg_mask</span> <span class="o">=</span> <span class="n">omega_filt</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">eps</span>
-
     <span class="n">neg_transitions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">neg_mask</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
 
     <span class="n">neg_starts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">neg_transitions</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
@@ -7765,7 +7763,6 @@ X is the patient ID (1-10)</p>
 
     <span class="c1"># Positive segments</span>
     <span class="n">pos_mask</span> <span class="o">=</span> <span class="n">omega_filt</span> <span class="o">&gt;</span> <span class="n">eps</span>
-
     <span class="n">pos_transitions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">pos_mask</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
 
     <span class="n">pos_starts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pos_transitions</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
@@ -7794,11 +7791,8 @@ X is the patient ID (1-10)</p>
     <span class="n">negative_segments</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">negative_peaks</span><span class="p">:</span>
-
         <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">neg_starts</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">neg_ends</span> <span class="o">&gt;=</span> <span class="n">p</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-
             <span class="n">negative_segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                 <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">neg_starts</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">neg_ends</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]]))</span>
             <span class="p">)</span>
@@ -7806,11 +7800,8 @@ X is the patient ID (1-10)</p>
     <span class="n">positive_segments</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">positive_peaks</span><span class="p">:</span>
-
         <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">pos_starts</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pos_ends</span> <span class="o">&gt;=</span> <span class="n">p</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-
             <span class="n">positive_segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                 <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">pos_starts</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">pos_ends</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]]))</span>
             <span class="p">)</span>
@@ -7833,11 +7824,8 @@ X is the patient ID (1-10)</p>
             <span class="k">return</span> <span class="p">[]</span>
 
         <span class="n">suppressed</span> <span class="o">=</span> <span class="p">[</span><span class="n">segments</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-
         <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-
             <span class="n">last_s</span><span class="p">,</span> <span class="n">last_e</span> <span class="o">=</span> <span class="n">suppressed</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
             <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">last_e</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="n">suppressed</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
 
@@ -7859,8 +7847,8 @@ X is the patient ID (1-10)</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="SPARC-computation">SPARC computation<a class="anchor-link" href="#SPARC-computation">¶</a></h3><p>The continue formulation of the SPARC is given by the following formula:</p>
-<p>$$SPARC = - ∫ |\sqrt (\frac{dV(ω)}{dω}) dω |$$</p>
+<h3 id="SPARC-computation">SPARC computation<a class="anchor-link" href="#SPARC-computation">¶</a></h3><p>The continue formulation of the SPARC is given by the following formula. It is based on the formula of an arc lenght where (1/wc).dw permits to normalize on the frequency range which allow the comparision between different signals.</p>
+<p>$$SPARC = - ∫ |\sqrt (\frac{1}{wc}+\frac{dV(ω)}{dω}) dω |$$</p>
 <p>But in practice, the SPARC is computed using a discrete approximation of the integral, which involves summing the euclidean distance between the points of the Fourier magnitude spectrum at discrete frequency points. The discrete approximation is given by the following formula:</p>
 <p>$$SPARC = - \sum |\sqrt(ds^2 + df^2)|$$</p>
 <p>Where ds and df are the discrete differences of the Fourier magnitude spectrum and the frequency, respectively.</p>
@@ -7887,7 +7875,7 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [84]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#######################################</span>
@@ -7910,8 +7898,7 @@ X is the patient ID (1-10)</p>
     <span class="n">spectrum</span> <span class="o">+=</span> <span class="mf">1e-10</span>
     <span class="n">valid</span> <span class="o">=</span> <span class="n">spectrum</span> <span class="o">&gt;</span> <span class="n">threshold</span>
     <span class="n">spectrum</span> <span class="o">=</span> <span class="n">spectrum</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span>
-    <span class="n">log_spectrum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span>
-    <span class="n">ds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">log_spectrum</span><span class="p">)</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span>
 
     <span class="c1"># compute df</span>
     <span class="n">freqs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span>
@@ -7935,6 +7922,7 @@ X is the patient ID (1-10)</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="NNP-computation">NNP computation<a class="anchor-link" href="#NNP-computation">¶</a></h3><p>The number of peaks (NNP) is computed by counting the number of peaks in the velocity profile using the find_peaks function from the scipy library. The prominence parameter is set to 0.005 to ensure that only significant peaks are counted, while small fluctuations in the signal are ignored. The number of peaks is then normalized by the movement duration to account for differences in movement speed.</p>
+<p>The prominence value (0.005) had been chosen after a sensitivity analysis (7). The find_peaks function can contain an other parameter called distance which is the minimum distance between peaks. The sensitivity analysis had shwon that for a prominence value of 0.005, the NNP value did not differ with distance values ranging from 1 to 10 samples, so the distance parameter was not included in the final computation.</p>
 <p>$$NNP = \frac{\text{number of peaks}}{\text{movement duration}}$$</p>
 </div>
 </div>
@@ -7944,10 +7932,10 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [85]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_nnp</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">prominence</span><span class="o">=</span><span class="mf">0.005</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_nnp</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">prominence</span><span class="p">):</span>
 
     <span class="n">peaks</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">prominence</span><span class="o">=</span><span class="n">prominence</span><span class="p">)</span>
     <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -7985,7 +7973,7 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [86]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">analyze_signal_v2</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">column_name</span><span class="p">):</span>
@@ -7995,6 +7983,7 @@ X is the patient ID (1-10)</p>
     <span class="n">fc</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="n">eps</span> <span class="o">=</span> <span class="mf">0.01</span>
     <span class="n">min_peak_distance</span> <span class="o">=</span> <span class="mf">0.5</span>
+    
 
     <span class="c1">###################################</span>
     <span class="c1">######## LOAD + FILTER ############</span>
@@ -8038,6 +8027,7 @@ X is the patient ID (1-10)</p>
     <span class="c1">###################################</span>
     <span class="c1">############ NNP ##################</span>
     <span class="c1">###################################</span>
+    <span class="n">prominence</span> <span class="o">=</span> <span class="mf">0.005</span>
 
     <span class="c1"># Compute NNP for flexion segments</span>
     <span class="n">flexion_peak_counts</span> <span class="o">=</span> <span class="p">[]</span>
@@ -8046,11 +8036,11 @@ X is the patient ID (1-10)</p>
         <span class="n">segment_omega</span> <span class="o">=</span> <span class="n">omega_filt</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">e</span><span class="p">]</span>
         <span class="n">segment_time</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="s2">"Time (s)"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">e</span><span class="p">]</span>
         <span class="n">flexion_peak_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="n">compute_nnp</span><span class="p">(</span><span class="n">segment_omega</span><span class="p">,</span><span class="n">segment_time</span><span class="p">)</span>
+            <span class="n">compute_nnp</span><span class="p">(</span><span class="n">segment_omega</span><span class="p">,</span><span class="n">segment_time</span><span class="p">,</span> <span class="n">prominence</span><span class="p">)</span>
         <span class="p">)</span>
 
     <span class="c1"># Whole signal NNP</span>
-    <span class="n">nnp</span> <span class="o">=</span> <span class="n">compute_nnp</span><span class="p">(</span><span class="n">omega_filt</span><span class="p">,</span> <span class="n">signal</span><span class="p">[</span><span class="s2">"Time (s)"</span><span class="p">])</span>
+    <span class="n">nnp</span> <span class="o">=</span> <span class="n">compute_nnp</span><span class="p">(</span><span class="n">omega_filt</span><span class="p">,</span> <span class="n">signal</span><span class="p">[</span><span class="s2">"Time (s)"</span><span class="p">],</span> <span class="n">prominence</span><span class="p">)</span>
 
 
     <span class="c1">###################################</span>
@@ -8089,7 +8079,7 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [87]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create a loop to analyze all the signals and concatenate the results in a single dataframe.</span>
@@ -8122,7 +8112,7 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [88]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">results_all</span>
@@ -8136,7 +8126,7 @@ X is the patient ID (1-10)</p>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[88]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -8167,82 +8157,82 @@ X is the patient ID (1-10)</p>
 <tr>
 <th>0</th>
 <td>FlexionDos_001_av</td>
-<td>-6.874907</td>
-<td>1.670103</td>
-<td>-4.159162</td>
-<td>1.804946</td>
+<td>-2.108382</td>
+<td>3.298969</td>
+<td>-1.885979</td>
+<td>3.606448</td>
 </tr>
 <tr>
 <th>1</th>
 <td>FlexionDos_002_av</td>
-<td>-6.735183</td>
-<td>3.946588</td>
-<td>-5.349642</td>
-<td>3.452343</td>
+<td>-2.454168</td>
+<td>4.836795</td>
+<td>-3.066837</td>
+<td>4.456060</td>
 </tr>
 <tr>
 <th>2</th>
 <td>FlexionDos_003_av</td>
-<td>-11.533392</td>
-<td>3.625192</td>
-<td>-5.434564</td>
-<td>4.445737</td>
+<td>-3.781590</td>
+<td>4.608295</td>
+<td>-3.985932</td>
+<td>5.254725</td>
 </tr>
 <tr>
 <th>3</th>
 <td>FlexionDos_004_av</td>
-<td>-8.011311</td>
-<td>1.224490</td>
-<td>-2.997148</td>
-<td>1.109087</td>
+<td>-2.674619</td>
+<td>1.632653</td>
+<td>-1.565408</td>
+<td>1.638562</td>
 </tr>
 <tr>
 <th>4</th>
 <td>FlexionDos_005_av</td>
-<td>-12.947031</td>
-<td>5.095796</td>
-<td>-15.475841</td>
-<td>5.819458</td>
+<td>-3.856549</td>
+<td>6.502717</td>
+<td>-8.874911</td>
+<td>7.158464</td>
 </tr>
 <tr>
 <th>5</th>
 <td>FlexionDos_006_av</td>
-<td>-10.508508</td>
-<td>2.743022</td>
-<td>-3.215461</td>
-<td>2.559037</td>
+<td>-3.063880</td>
+<td>3.435996</td>
+<td>-1.670882</td>
+<td>3.252055</td>
 </tr>
 <tr>
 <th>6</th>
 <td>FlexionDos_007_av</td>
-<td>-7.602682</td>
-<td>1.015572</td>
-<td>-3.276752</td>
-<td>0.961883</td>
+<td>-2.568564</td>
+<td>1.462424</td>
+<td>-1.754168</td>
+<td>1.426816</td>
 </tr>
 <tr>
 <th>7</th>
 <td>FlexionDos_008_av</td>
-<td>-9.216218</td>
-<td>3.790782</td>
-<td>-6.385948</td>
-<td>3.924780</td>
+<td>-2.872345</td>
+<td>4.536510</td>
+<td>-4.821679</td>
+<td>4.333151</td>
 </tr>
 <tr>
 <th>8</th>
 <td>FlexionDos_009_av</td>
-<td>-8.477055</td>
-<td>1.893048</td>
-<td>-2.691233</td>
-<td>2.456543</td>
+<td>-2.625414</td>
+<td>3.080214</td>
+<td>-1.556072</td>
+<td>3.075312</td>
 </tr>
 <tr>
 <th>9</th>
 <td>FlexionDos_010_av</td>
-<td>-9.464665</td>
-<td>4.101877</td>
-<td>-6.167191</td>
-<td>4.360160</td>
+<td>-2.871953</td>
+<td>4.664879</td>
+<td>-4.266185</td>
+<td>4.990489</td>
 </tr>
 </tbody>
 </table>
@@ -8256,13 +8246,41 @@ X is the patient ID (1-10)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [89]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Save as xlsx in the folder "results"</span>
 <span class="n">results_all</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">"results/results_all.xlsx"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="References-:">References :<a class="anchor-link" href="#References-:">¶</a></h1><ol>
+<li><p>Hartvigsen J, Hancock MJ, Kongsted A, Louw Q, Ferreira ML, Genevay S, et al. What low back pain is and why we need to pay attention. Lancet Lond Engl. 9 juin 2018;391(10137):2356‑67</p>
+</li>
+<li><p>Errabity A, Calmels P, Han WS, Bonnaire R, Pannetier R, Convert R, et al. The effect of low back pain on spine kinematics: A systematic review and meta-analysis. Clin Biomech. août 2023;108:106070</p>
+</li>
+<li><p>Balasubramanian S, Melendez-Calderon A, Roby-Brami A, Burdet E. On the analysis of movement smoothness. J Neuroengineering Rehabil. 9 déc 2015;12:112</p>
+</li>
+<li><p>Balasubramanian S, Melendez-Calderon A, Roby-Brami A, Burdet E. On the analysis of movement smoothness. J Neuroeng Rehabil. 9 déc 2015;12:112. doi:10.1186/s12984-015-0090-9 PubMed PMID: 26651329; PubMed Central PMCID: PMC4674971.</p>
+</li>
+<li><p>Melendez-Calderon A, Shirota C, Balasubramanian S. Estimating Movement Smoothness From Inertial Measurement Units. Front Bioeng Biotechnol. 14 janv 2021;8:558771. doi:10.3389/fbioe.2020.558771</p>
+</li>
+<li><p><a href="https://github.com/ancelingely/Projet_R_Python_M2_REHAB.git">https://github.com/ancelingely/Projet_R_Python_M2_REHAB.git</a></p>
+</li>
+<li><p><a href="https://github.com/ancelingely/Test_sensibilit-.git">https://github.com/ancelingely/Test_sensibilit-.git</a></p>
+</li>
+<li><p>Giavarina D. Understanding Bland Altman analysis. Biochem Med. 2015;25(2):141‑51. doi:10.11613/BM.2015.015</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
